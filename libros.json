@@ -12,12 +12,6 @@
   "resena": "No se trata de un tratado farragoso sobre el tema de su título, sino de una recopilación de ensayos sobre una base común, de fácil lectura y comprensión. Recoge tres ensayos: La seguridad jurídica como protección de los derechos del ciudadano y La Constitución como fuente primigenia de la independencia e imparcialidad del Juez, presentados en el Primer y Segundo Concurso para Magistrados de la Suprema Corte de Justicia y la Escuela Nacional de la Judicatura, y Principios constitucionales y derechos fundamentales, parte de la obra colectiva Curso de Garantías Constitucionales.\n\nEs encomiable la publicación de este libro, ya que la persona humana es el objeto central y la razón de ser del Estado dominicano."
  },
  {
-  "titulo": "Poemas del Silencio (Haikus)",
-  "anio": "Contiene un ensayo sobre el haiku",
-  "img": "libros/poemas-del-silencio.jpg",
-  "resena": "La “poiesis”, como decían los antiguos griegos, del haiku trasciende el lenguaje que lo conforma, la métrica que lo distingue y la temática que aborda. Se aposenta, como una mariposa o como la música del silencio, en el canto interior que todos poseemos, aunque muchos no se dan cuenta de que lo tienen.\n\nTienen mucha razón los que sostienen que el haiku es el poema de la presencialización, en razón de que refleja el alma de lo abordado por el haijin, como si fuera un espejo mágico."
- },
- {
   "titulo": "Derecho Administrativo Constitucionalizado",
   "anio": "Para ganar los casos y vencer la arbitrariedad, con la Constitución",
   "img": "libros/derecho-administrativo-constitucionalizado.jpg",
@@ -28,12 +22,6 @@
   "anio": "Historia e interpretación · Tercera edición",
   "img": "libros/el-derecho-instrumento-politico.jpg",
   "resena": "Guiado por el método de análisis dialéctico materialista, Rafael Ciprián hace una lúcida interpretación de la evolución del Derecho a través de los distintos modos de producción que la humanidad ha conocido. Su obra es coherente y lógica. Pero además, un refrescante estímulo a la reflexión y al debate.\n\n— Dr. Leonel Fernández Reyna, ex presidente de la República"
- },
- {
-  "titulo": "Esa voz de agua que nos mira",
-  "anio": "Poemas",
-  "img": "libros/esa-voz-de-agua-que-nos-mira.jpg",
-  "resena": "El poeta Rafael Ciprián, en este importante libro, sabe bien que la poesía y su ductilidad temática y estructural es como el agua; de ahí que saludemos su nuevo libro como un aporte más de este intelectual, cuyos valiosos aportes en diversas manifestaciones del conocimiento van parejos a su indiscutible y valorada condición humana.\n\n— Poeta Mateo Morrison, Premio Nacional de Literatura"
  },
  {
   "titulo": "Tribunal de Tierras y Derechos Sucesorales",
@@ -82,5 +70,23 @@
   "anio": "En su doble función: política y social",
   "img": "libros/el-estado-doble-funcion.jpg",
   "resena": "Rafael Ciprián es uno de los jóvenes narradores y ensayistas de la última generación. Viene surgiendo con un estilo vigoroso y refinado. No hay dudas, desde ya asegura ser una de las grandes promesas de las letras y de todo nuestro quehacer intelectual."
+ },
+ {
+  "titulo": "Las tristes cavilaciones de Don Jaramillo",
+  "anio": "Cuentos",
+  "img": "libros/las-tristes-cavilaciones-don-jaramillo.jpg",
+  "resena": "Desde muy temprana edad manifestó su apego a la lectura, siendo su aforismo principal: “Lee… Y darás libertad al perfume que contiene la flor del pensamiento”; aforismo éste que recoge su profundo amor a los conocimientos humanos."
+ },
+ {
+  "titulo": "Poemas del Silencio (Haikus)",
+  "anio": "Contiene un ensayo sobre el haiku",
+  "img": "libros/poemas-del-silencio.jpg",
+  "resena": "La “poiesis”, como decían los antiguos griegos, del haiku trasciende el lenguaje que lo conforma, la métrica que lo distingue y la temática que aborda. Se aposenta, como una mariposa o como la música del silencio, en el canto interior que todos poseemos, aunque muchos no se dan cuenta de que lo tienen.\n\nTienen mucha razón los que sostienen que el haiku es el poema de la presencialización, en razón de que refleja el alma de lo abordado por el haijin, como si fuera un espejo mágico."
+ },
+ {
+  "titulo": "Esa voz de agua que nos mira",
+  "anio": "Poemas",
+  "img": "libros/esa-voz-de-agua-que-nos-mira.jpg",
+  "resena": "El poeta Rafael Ciprián, en este importante libro, sabe bien que la poesía y su ductilidad temática y estructural es como el agua; de ahí que saludemos su nuevo libro como un aporte más de este intelectual, cuyos valiosos aportes en diversas manifestaciones del conocimiento van parejos a su indiscutible y valorada condición humana.\n\n— Poeta Mateo Morrison, Premio Nacional de Literatura"
  }
 ]
