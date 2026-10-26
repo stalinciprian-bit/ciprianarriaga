@@ -33,8 +33,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--rule)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
 .brand{display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
-.brand b{font:700 clamp(28px,3.8vw,40px)/1.1 'EB Garamond',Garamond,serif;letter-spacing:.01em;color:var(--ink)}
-.brand span{font:600 13px/1.3 'EB Garamond',Garamond,serif;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-top:3px}
+.brand b{font:700 clamp(28px,3.8vw,40px)/1.1 var(--display);letter-spacing:.01em;color:var(--ink)}
+.brand span{font:600 13px/1.3 var(--display);letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-top:3px}
 nav{display:flex;gap:20px;flex-wrap:wrap}
 nav a{font:500 14px var(--body);text-decoration:none;color:var(--ink)}
 nav a:hover{color:var(--brass)}
