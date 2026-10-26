@@ -783,7 +783,7 @@ function setLang(l){
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
 
 const BKL={es:'Sobre la obra',en:'About the book',fr:'À propos de l’œuvre'};
-let FEED=[],YEAR='*',SHOWN=15,LANG='es',CUR=null,CURL=false;
+let FEED=[],YEAR='*',SHOWN=5,LANG='es',CUR=null,CURL=false;
 const MES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const MON={en:['January','February','March','April','May','June','July','August','September','October','November','December'],fr:['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre']};
 const fd=d=>{const [y,m,dd]=d.split('-');if(LANG==='en')return `${MON.en[m-1]} ${+dd}, ${y}`;if(LANG==='fr')return `${+dd} ${MON.fr[m-1]} ${y}`;return `${+dd} de ${MES[m-1]} de ${y}`};
@@ -816,10 +816,10 @@ function boot(data){
   FEED=data.slice().sort((a,b)=>a.d<b.d?1:-1);const L=FEED[0];
   showArt(L,true);
   const ys=['*',...new Set(FEED.map(a=>a.d.slice(0,4)))];const box=document.getElementById('years');box.innerHTML='';
-  ys.forEach(y=>{const b=document.createElement('button');b.type='button';b.textContent=y==='*'?tx('all'):y;b.dataset.y=y;b.setAttribute('aria-pressed',y===YEAR);b.onclick=()=>{YEAR=y;SHOWN=15;box.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()};box.append(b)});
+  ys.forEach(y=>{const b=document.createElement('button');b.type='button';b.textContent=y==='*'?tx('all'):y;b.dataset.y=y;b.setAttribute('aria-pressed',y===YEAR);b.onclick=()=>{YEAR=y;SHOWN=5;box.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()};box.append(b)});
   render();
 }
-document.getElementById('q').addEventListener('input',()=>{SHOWN=15;render()});
+document.getElementById('q').addEventListener('input',()=>{SHOWN=5;render()});
 document.getElementById('more').addEventListener('click',()=>{SHOWN+=30;render()});
 (()=>{let l=null;try{l=localStorage.getItem('ca-lang')}catch(e){}if(!l){const n=(navigator.language||'es').slice(0,2);if(n==='en'||n==='fr')l=n}if(l&&l!=='es')setLang(l)})();
 fetch('feed.json').then(r=>r.json()).then(boot).catch(()=>{document.getElementById('lt-title').textContent='Vea los artículos en El Nacional'});
