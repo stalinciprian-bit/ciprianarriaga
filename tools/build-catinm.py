@@ -58,7 +58,7 @@ tpl = '''<!doctype html>
 <body>
 <header>
   <div class="wrap">
-    <a class="brand" href="../../"><b>Ciprián Arriaga &amp; Asocs.</b><span>Abogados · Notarios</span></a>
+    <a class="brand" href="../../"><img class="brand-logo" src="../../logo-ca.webp" alt="" width="1000" height="442"><div class="bt"><b>Ciprián Arriaga &amp; Asocs.</b><span>Abogados · Notarios</span></div></a>
     <nav aria-label="Secciones">
       <a href="../../#areas">Práctica</a>
       <a href="../../#equipo">Equipo</a>
