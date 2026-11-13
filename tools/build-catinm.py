@@ -76,7 +76,7 @@ tpl = '''<!doctype html>
     </div>
     <div class="side">
       {prep}{cerr}
-      <span class="eyebrow">{tipo}{oper}</span>
+      {dest}<span class="eyebrow">{tipo}{oper}</span>
       <h1>{titulo}</h1>
       <div class="zona">{zona}</div>
       <div class="precio">{precio}</div>
@@ -134,7 +134,8 @@ for i in data:
         i['caracteristicas'] = list(i.get('caracteristicas', [])) + ['Mantenimiento: ' + i['mantenimiento']]
     cerr = '<p class="cerr"><b>Este inmueble ya no está disponible.</b> Vea otras opciones en el <a href="../">catálogo</a>.</p>' if i.get('cerrado') else ''
     btns = '' if i.get('cerrado') else (f'<a class="btn" href="{wa}" target="_blank" rel="noopener">Consultar por WhatsApp</a>\n      <a class="btn alt" href="tel:+18095333060">Llamar al 809-533-3060</a>')
-    page = tpl.format(cinta=cinta, mant=mant, cerr=cerr, btns=btns, 
+    dest = f'<span class="dest" style="margin-bottom:14px">★ {esc(i["destacado"])} ★</span><br>' if i.get('destacado') else ''
+    page = tpl.format(dest=dest, cinta=cinta, mant=mant, cerr=cerr, btns=btns, 
         css=css, extra=extra, titulo=esc(i['titulo']), zona=esc(i['zona']), let=esc(let), codigo=esc(i.get('codigo', '')), ogimg=ogimg,
         main=main, thumbs=thumbs, tipo=esc(i['tipo']), oper=(' · ' + esc(i['operacion'])) if i.get('operacion') else '',
         precio=precio, specs=('<div class="specs">' + ''.join(sp) + '</div>') if sp else '', wa=wa, pdf=pdf,
