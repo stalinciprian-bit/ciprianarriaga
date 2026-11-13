@@ -13,6 +13,8 @@ extra = '''
 .top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;padding-block:20px 48px;align-items:start}
 @media(max-width:820px){.top{grid-template-columns:1fr;gap:24px}}
 .gal .main{aspect-ratio:4/3;background:var(--navy);overflow:hidden;position:relative}
+.cerr{background:#EFE9E6;border-left:3px solid var(--rose);padding:14px 16px;margin:0 0 18px;font-size:15px}
+.mantl{margin:14px 0 0;font-size:15px}
 .gal .main img{width:100%;height:100%;object-fit:cover;display:block}
 .gal .main .none{position:absolute;inset:0;display:grid;place-items:center;background:var(--logo-bg)}
 .gal .main .none img{width:40%;height:auto}
@@ -69,18 +71,17 @@ tpl = '''<!doctype html>
   <p class="crumb"><a href="../">Catálogo inmobiliario</a> › Letrero N° {let}</p>
   <div class="top">
     <div class="gal">
-      <div class="main" id="main">{main}</div>
+      <div class="main" id="main">{cinta}{main}</div>
       {thumbs}
     </div>
     <div class="side">
-      {prep}
+      {prep}{cerr}
       <span class="eyebrow">{tipo}{oper}</span>
       <h1>{titulo}</h1>
       <div class="zona">{zona}</div>
       <div class="precio">{precio}</div>
-      {specs}
-      <a class="btn" href="{wa}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
-      <a class="btn alt" href="tel:+18095333060">Llamar al 809-533-3060</a>
+      {specs}{mant}
+      {btns}
       {pdf}
       <span class="let">Letrero N° {let} · {codigo}</span>
     </div>
@@ -121,17 +122,25 @@ for i in data:
     if i.get('parqueos'): sp.append(f'<span><b>{esc(i["parqueos"])}</b> parqueos</span>')
     precio = (money(i['precio'], i.get('moneda')) + (' <small>/ mes</small>' if i.get('operacion') == 'Alquiler' else '')) if i.get('precio') else '<small>Precio a consultar</small>'
     wa = 'https://wa.me/18098155997?text=' + __import__('urllib.parse').parse.quote(f'Hola, me interesa el inmueble del letrero N° {let} ({i["titulo"]}) del catálogo de Ciprián Arriaga & Asocs.')
-    feat = ('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else ''
+    feat_ = ('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else ''
     legal = f'<h2>Situación legal</h2><p>{esc(i["legal"])}</p>' if i.get('legal') else ''
     mapa = f'<p><a href="{esc(i["mapa"])}" target="_blank" rel="noopener">Ver ubicación en el mapa</a></p>' if i.get('mapa') else ''
     pdf = f'<a class="pdfl" href="{esc(i["pdf"])}">Descargar presentación (PDF)</a>' if i.get('pdf') else ''
-    page = tpl.format(
+    oper = i.get('operacion')
+    cinta = (f'<span class="cinta{" alq" if oper=="Alquiler" else (" vya" if oper not in ("Venta","Alquiler") else "")}">' +
+             esc('En venta' if oper == 'Venta' else 'En alquiler' if oper == 'Alquiler' else oper) + '</span>') if oper and not i.get('cerrado') else ''
+    mant = f'<p class="mantl"><b>Mantenimiento:</b> {esc(i["mantenimiento"])}</p>' if i.get('mantenimiento') else ''
+    if i.get('mantenimiento'):
+        i['caracteristicas'] = list(i.get('caracteristicas', [])) + ['Mantenimiento: ' + i['mantenimiento']]
+    cerr = '<p class="cerr"><b>Este inmueble ya no está disponible.</b> Vea otras opciones en el <a href="../">catálogo</a>.</p>' if i.get('cerrado') else ''
+    btns = '' if i.get('cerrado') else (f'<a class="btn" href="{wa}" target="_blank" rel="noopener">Consultar por WhatsApp</a>\n      <a class="btn alt" href="tel:+18095333060">Llamar al 809-533-3060</a>')
+    page = tpl.format(cinta=cinta, mant=mant, cerr=cerr, btns=btns, 
         css=css, extra=extra, titulo=esc(i['titulo']), zona=esc(i['zona']), let=esc(let), codigo=esc(i.get('codigo', '')), ogimg=ogimg,
         main=main, thumbs=thumbs, tipo=esc(i['tipo']), oper=(' · ' + esc(i['operacion'])) if i.get('operacion') else '',
         precio=precio, specs=('<div class="specs">' + ''.join(sp) + '</div>') if sp else '', wa=wa, pdf=pdf,
         prep='<p class="prep">Presentación en preparación. Escríbanos y le damos todos los detalles.</p>' if i.get('preparacion') else '',
         desc=(f'<h2>Descripción</h2><p>{esc(i["descripcion"])}</p>' if i.get('descripcion') and not i.get('preparacion') else ''),
-        feat=feat, legal=legal, mapa=mapa)
+        feat=('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else '', legal=legal, mapa=mapa)
     out = cat / let; out.mkdir(exist_ok=True)
     (out / 'index.html').write_text(page, encoding='utf8')
     print('ok', f'catinm/{let}/')

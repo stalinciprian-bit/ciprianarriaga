@@ -54,9 +54,13 @@ nav a:hover,nav a[aria-current]{color:var(--plum)}
 .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .ph .none{position:absolute;inset:0;display:grid;place-items:center;background:var(--logo-bg)}
 .ph .none img{width:46%;height:auto;opacity:.9}
+.cinta{position:absolute;left:-52px;top:26px;width:190px;transform:rotate(-45deg);background:var(--brass);color:#1B2A41;text-align:center;font:700 11px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;padding:8px 0;box-shadow:0 2px 6px rgba(0,0,0,.25);z-index:2;pointer-events:none}
+.cinta.alq{background:var(--rose);color:#fff}
+.cinta.vya{background:var(--navy);color:#fff}
 .tag{position:absolute;left:12px;top:12px;background:var(--brass);color:#1B2A41;font:700 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px}
 .tag.alq{background:var(--rose);color:#fff}
 .ej{position:absolute;right:12px;top:12px;background:rgba(27,42,65,.85);color:#F7F6F2;font:600 10px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px}
+.mant{font-size:14px;color:var(--muted)}
 .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .body .tipo{font:600 12px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
 .body h3{font-size:22px}
@@ -83,6 +87,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;padding-block:20px 48px;align-items:start}
 @media(max-width:820px){.top{grid-template-columns:1fr;gap:24px}}
 .gal .main{aspect-ratio:4/3;background:var(--navy);overflow:hidden;position:relative}
+.cerr{background:#EFE9E6;border-left:3px solid var(--rose);padding:14px 16px;margin:0 0 18px;font-size:15px}
+.mantl{margin:14px 0 0;font-size:15px}
 .gal .main img{width:100%;height:100%;object-fit:cover;display:block}
 .gal .main .none{position:absolute;inset:0;display:grid;place-items:center;background:var(--logo-bg)}
 .gal .main .none img{width:40%;height:auto}
@@ -123,7 +129,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <p class="crumb"><a href="../">Catálogo inmobiliario</a> › Letrero N° 2</p>
   <div class="top">
     <div class="gal">
-      <div class="main" id="main"><div class="none"><img src="../../logo-ca.webp" alt=""></div></div>
+      <div class="main" id="main"><span class="cinta alq">En alquiler</span><div class="none"><img src="../../logo-ca.webp" alt=""></div></div>
       
     </div>
     <div class="side">
@@ -132,7 +138,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <h1>Local de ejemplo en la Av. Winston Churchill</h1>
       <div class="zona">Evaristo Morales, Santo Domingo</div>
       <div class="precio">USD 2,200 <small>/ mes</small></div>
-      <div class="specs"><span><b>96</b> m²</span><span><b>2</b> baños</span><span><b>3</b> parqueos</span></div>
+      <div class="specs"><span><b>96</b> m²</span><span><b>2</b> baños</span><span><b>3</b> parqueos</span></div><p class="mantl"><b>Mantenimiento:</b> incluido en el alquiler</p>
       <a class="btn" href="https://wa.me/18098155997?text=Hola%2C%20me%20interesa%20el%20inmueble%20del%20letrero%20N%C2%B0%202%20%28Local%20de%20ejemplo%20en%20la%20Av.%20Winston%20Churchill%29%20del%20cat%C3%A1logo%20de%20Cipri%C3%A1n%20Arriaga%20%26%20Asocs." target="_blank" rel="noopener">Consultar por WhatsApp</a>
       <a class="btn alt" href="tel:+18095333060">Llamar al 809-533-3060</a>
       
@@ -140,7 +146,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </div>
   <div class="det">
-    <h2>Descripción</h2><p>Ficha de ejemplo. Sustituir por el inmueble real.</p>
+    <h2>Descripción</h2><p>Ficha de ejemplo. Sustituir por el inmueble real.</p><h2>Características</h2><ul><li>Mantenimiento: incluido en el alquiler</li></ul>
     <p class="note" style="border:0;padding:20px 0 0">Precios y disponibilidad sujetos a confirmación. Consulte con nuestro despacho antes de cualquier oferta o reserva.</p>
   </div>
 </main>

@@ -51,9 +51,13 @@ nav a:hover,nav a[aria-current]{color:var(--plum)}
 .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .ph .none{position:absolute;inset:0;display:grid;place-items:center;background:var(--logo-bg)}
 .ph .none img{width:46%;height:auto;opacity:.9}
+.cinta{position:absolute;left:-52px;top:26px;width:190px;transform:rotate(-45deg);background:var(--brass);color:#1B2A41;text-align:center;font:700 11px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;padding:8px 0;box-shadow:0 2px 6px rgba(0,0,0,.25);z-index:2;pointer-events:none}
+.cinta.alq{background:var(--rose);color:#fff}
+.cinta.vya{background:var(--navy);color:#fff}
 .tag{position:absolute;left:12px;top:12px;background:var(--brass);color:#1B2A41;font:700 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px}
 .tag.alq{background:var(--rose);color:#fff}
 .ej{position:absolute;right:12px;top:12px;background:rgba(27,42,65,.85);color:#F7F6F2;font:600 10px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px}
+.mant{font-size:14px;color:var(--muted)}
 .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .body .tipo{font:600 12px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
 .body h3{font-size:22px}
@@ -134,18 +138,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     if(i.banos) sp.push('<span><b>'+esc(i.banos)+'</b> baños</span>');
     if(i.parqueos) sp.push('<span><b>'+esc(i.parqueos)+'</b> parqueos</span>');
     return '<article class="card"><div class="ph">'+foto+
-      (i.operacion?'<span class="tag'+(i.operacion==='Alquiler'?' alq':'')+'">'+esc(i.operacion)+'</span>':'')+
+      (i.operacion?'<span class="cinta'+(i.operacion==='Alquiler'?' alq':(i.operacion==='Venta'?'':' vya'))+'">'+esc(i.operacion==='Venta'?'En venta':(i.operacion==='Alquiler'?'En alquiler':i.operacion))+'</span>':'')+
       (i.ejemplo?'<span class="ej">Ejemplo</span>':'')+'</div>'+
       '<div class="body"><span class="tipo">'+esc(i.tipo)+'</span><h3><a class="tl" href="'+esc(i.letrero)+'/">'+esc(i.titulo)+'</a></h3>'+
       '<div class="zona">'+esc(i.zona)+'</div>'+
       '<div class="precio">'+(i.precio?fmt(i.precio,i.moneda)+(i.operacion==='Alquiler'?' <small>/ mes</small>':''):'<small>Precio a consultar</small>')+'</div>'+
       (sp.length?'<div class="specs">'+sp.join('')+'</div>':'')+
+      (i.mantenimiento?'<div class="mant">Mantenimiento: '+esc(i.mantenimiento)+'</div>':'')+
       (i.descripcion?'<p class="desc">'+esc(i.descripcion)+'</p>':'')+
       '<div class="cta"><a class="btn" href="'+esc(i.letrero)+'/">Ver presentación</a><span class="cod">Letrero N° '+esc(i.letrero)+'</span></div></div></article>';
   }
   function render(){
     const q=$('#q').value.trim().toLowerCase(), tp=$('#tipo').value;
-    const L=DATA.filter(i=>(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo+' '+i.letrero).toLowerCase().includes(q)));
+    const L=DATA.filter(i=>!i.cerrado&&(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo+' '+i.letrero).toLowerCase().includes(q)));
     $('#grid').innerHTML=L.map(card).join('');
     $('#empty').hidden=L.length>0;
     $('#count').textContent=L.length+(L.length===1?' inmueble':' inmuebles');
