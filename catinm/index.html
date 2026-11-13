@@ -125,7 +125,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 (function(){
   const $=s=>document.querySelector(s);
   const esc=t=>String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  const fmt=(n,m)=>(m==='USD'?'USD ':'RD$ ')+Number(n).toLocaleString('en-US');
+  const fmt=(n,m)=>(m==='USD'?'USD$':'RD$')+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
   let DATA=[],op='';
   function wa(i){
     const t='Hola, me interesa el inmueble del letrero N° '+i.letrero+' ('+i.titulo+') del catálogo de Ciprián Arriaga & Asocs.';

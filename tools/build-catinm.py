@@ -39,7 +39,7 @@ extra = '''
 .pdfl{display:inline-block;margin-top:8px}
 '''
 def esc(x): return html.escape(str(x if x is not None else ''), quote=True)
-def money(n, m): return ('USD ' if m == 'USD' else 'RD$ ') + f'{int(n):,}'
+def money(n, m): return ('USD$' if m == 'USD' else 'RD$') + f'{float(n):,.2f}'
 tpl = '''<!doctype html>
 <html lang="es">
 <head>
