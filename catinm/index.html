@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catálogo inmobiliario · Ciprián Arriaga &amp; Asocs.</title>
+<meta name="description" content="Catálogo de inmuebles en venta y alquiler de Ciprián Arriaga &amp; Asocs., Abogados Notarios.">
+<link rel="icon" href="../logo-ca.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<style>
+:root{
+  --paper:#F7F6F2; --surface:#ffffff; --ink:#1B2A41; --muted:#5B6670; --rule:#D9DCE0;
+  --navy:#1B2A41; --brass:#C9A227; --gold-ink:#8A6A12; --plum:#4B2E6F; --rose:#C9577F; --brass-soft:#F3ECD3; --logo-bg:#1B2A41;
+  --display:"Times New Roman",Tinos,Times,serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#0f151d; --surface:#161e28; --ink:#e7ebef; --muted:#9aa5b2; --rule:#2a3542;
+  --navy:#a9c1dc; --gold-ink:#C9A227; --plum:#B9A0DC; --rose:#E27CA3; --brass-soft:#2a2418; color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--display)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+a{color:var(--navy)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0;line-height:1.15}
+.eyebrow{font:500 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
+header{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--rule);border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A41 0 50%,#5B6670 50% 60%,#4B2E6F 60% 75%,#C9577F 75% 90%,#C9A227 90% 100%) 1 0 0 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+.brand b{font:700 clamp(26px,3.6vw,38px)/1.1 var(--display)}
+.brand span{font:600 13px/1.3 var(--display);letter-spacing:.22em;text-transform:uppercase;color:var(--plum);margin-top:3px}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{font:500 14px var(--display);text-decoration:none;color:var(--ink)}
+nav a:hover,nav a[aria-current]{color:var(--plum)}
+.hero{padding-block:56px 36px;border-bottom:1px solid var(--rule)}
+.hero h1{font-size:clamp(32px,5vw,52px);margin-top:16px}
+.hero h1 em{color:var(--rose)}
+.hero p{max-width:60ch;color:var(--muted);font-size:18px;margin:18px 0 0}
+.filters{display:flex;gap:12px;flex-wrap:wrap;align-items:end;padding-block:24px}
+.filters label{display:flex;flex-direction:column;gap:4px;font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.filters select,.filters input{font:400 16px var(--display);padding:9px 12px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);min-width:160px}
+.seg{display:flex;border:1px solid var(--rule)}
+.seg button{font:600 13px var(--display);letter-spacing:.08em;background:var(--surface);color:var(--muted);border:0;border-left:1px solid var(--rule);padding:11px 16px;cursor:pointer}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--paper)}
+.count{margin-left:auto;font:400 14px var(--display);color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px;padding-bottom:64px}
+.card{background:var(--surface);border:1px solid var(--rule);display:flex;flex-direction:column}
+.ph{position:relative;aspect-ratio:4/3;background:var(--navy);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph .none{position:absolute;inset:0;display:grid;place-items:center;background:var(--logo-bg)}
+.ph .none img{width:46%;height:auto;opacity:.9}
+.tag{position:absolute;left:12px;top:12px;background:var(--brass);color:#1B2A41;font:700 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px}
+.tag.alq{background:var(--rose);color:#fff}
+.ej{position:absolute;right:12px;top:12px;background:rgba(27,42,65,.85);color:#F7F6F2;font:600 10px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px}
+.body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.body .tipo{font:600 12px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
+.body h3{font-size:22px}
+.zona{color:var(--muted);font-size:15px}
+.precio{font:700 26px/1.1 var(--display);color:var(--ink)}
+.precio small{font:400 14px var(--display);color:var(--muted)}
+.specs{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted);border-top:1px solid var(--rule);padding-top:10px}
+.specs b{color:var(--ink)}
+.desc{font-size:15px;color:var(--muted);margin:0}
+.cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:6px}
+.btn{display:inline-block;background:var(--navy);color:var(--paper);text-decoration:none;font:600 13px var(--display);letter-spacing:.1em;text-transform:uppercase;padding:11px 16px}
+.btn:hover{background:var(--plum)}
+.cod{font-size:12.5px;color:var(--muted);letter-spacing:.06em}
+.empty{padding:60px 0;text-align:center;color:var(--muted)}
+.note{border-top:1px solid var(--rule);padding-block:22px;font-size:13px;color:var(--muted)}
+footer{border-top:1px solid var(--rule);padding-block:28px;font:400 12.5px/1.6 var(--display);color:var(--muted);text-align:center}
+.foot-logo{display:block;width:min(260px,70%);margin:0 auto 20px;background:var(--logo-bg);border-radius:14px;padding:8px 10px}
+.foot-logo img{width:100%;height:auto;display:block}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="../"><b>Ciprián Arriaga &amp; Asocs.</b><span>Abogados · Notarios</span></a>
+    <nav aria-label="Secciones">
+      <a href="../#areas">Práctica</a>
+      <a href="../#equipo">Equipo</a>
+      <a href="./" aria-current="page">Catálogo inmobiliario</a>
+      <a href="../#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero"><div class="wrap">
+    <span class="eyebrow">Catálogo inmobiliario</span>
+    <h1>Inmuebles con <em>respaldo jurídico</em></h1>
+    <p>Propiedades en venta y alquiler, revisadas por nuestro despacho: título, registro e impuestos al día antes de ofrecerlas.</p>
+  </div></section>
+  <div class="wrap">
+    <div class="filters">
+      <div class="seg" role="group" aria-label="Operación">
+        <button type="button" data-op="" aria-pressed="true">Todos</button>
+        <button type="button" data-op="Venta" aria-pressed="false">Venta</button>
+        <button type="button" data-op="Alquiler" aria-pressed="false">Alquiler</button>
+      </div>
+      <label>Tipo<select id="tipo"><option value="">Todos</option></select></label>
+      <label>Buscar<input id="q" type="search" placeholder="Zona o palabra"></label>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No hay inmuebles con esos filtros. Escríbanos y le buscamos opciones.</p>
+    <p class="note">Precios y disponibilidad sujetos a confirmación. Consulte con nuestro despacho antes de cualquier oferta o reserva.</p>
+  </div>
+</main>
+<footer>
+  <a class="foot-logo" href="../" aria-label="Ir al inicio"><img src="../logo-ca.webp" alt="Ciprián Arriaga &amp; Asoc." width="1000" height="442" loading="lazy"></a>
+  <div class="wrap"><span>© 2026 Ciprián Arriaga &amp; Asocs. · Abogados Notarios</span><span>ciprianarriaga.com · <a href="mailto:info@ciprianarriaga.com">info@ciprianarriaga.com</a></span></div>
+</footer>
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=t=>String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const fmt=(n,m)=>(m==='USD'?'USD ':'RD$ ')+Number(n).toLocaleString('en-US');
+  let DATA=[],op='';
+  function wa(i){
+    const t='Hola, me interesa el inmueble '+i.codigo+' ('+i.titulo+') del catálogo de Ciprián Arriaga & Asocs.';
+    return 'https://wa.me/18098155997?text='+encodeURIComponent(t);
+  }
+  function card(i){
+    const foto=(i.fotos&&i.fotos[0])
+      ? '<img src="'+esc(i.fotos[0])+'" alt="'+esc(i.titulo)+'" loading="lazy">'
+      : '<div class="none"><img src="../logo-ca.webp" alt=""></div>';
+    const sp=[];
+    if(i.m2) sp.push('<span><b>'+esc(i.m2)+'</b> m²</span>');
+    if(i.habitaciones) sp.push('<span><b>'+esc(i.habitaciones)+'</b> hab.</span>');
+    if(i.banos) sp.push('<span><b>'+esc(i.banos)+'</b> baños</span>');
+    if(i.parqueos) sp.push('<span><b>'+esc(i.parqueos)+'</b> parqueos</span>');
+    return '<article class="card"><div class="ph">'+foto+
+      '<span class="tag'+(i.operacion==='Alquiler'?' alq':'')+'">'+esc(i.operacion)+'</span>'+
+      (i.ejemplo?'<span class="ej">Ejemplo</span>':'')+'</div>'+
+      '<div class="body"><span class="tipo">'+esc(i.tipo)+'</span><h3>'+esc(i.titulo)+'</h3>'+
+      '<div class="zona">'+esc(i.zona)+'</div>'+
+      '<div class="precio">'+fmt(i.precio,i.moneda)+(i.operacion==='Alquiler'?' <small>/ mes</small>':'')+'</div>'+
+      (sp.length?'<div class="specs">'+sp.join('')+'</div>':'')+
+      (i.descripcion?'<p class="desc">'+esc(i.descripcion)+'</p>':'')+
+      '<div class="cta"><a class="btn" href="'+wa(i)+'" target="_blank" rel="noopener">Consultar</a><span class="cod">'+esc(i.codigo)+'</span></div></div></article>';
+  }
+  function render(){
+    const q=$('#q').value.trim().toLowerCase(), tp=$('#tipo').value;
+    const L=DATA.filter(i=>(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo).toLowerCase().includes(q)));
+    $('#grid').innerHTML=L.map(card).join('');
+    $('#empty').hidden=L.length>0;
+    $('#count').textContent=L.length+(L.length===1?' inmueble':' inmuebles');
+  }
+  document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
+    op=b.dataset.op;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
+  $('#tipo').addEventListener('change',render);$('#q').addEventListener('input',render);
+  fetch('inmuebles.json').then(r=>r.json()).then(d=>{
+    DATA=d;[...new Set(d.map(i=>i.tipo))].sort().forEach(t=>{const o=document.createElement('option');o.value=o.textContent=t;$('#tipo').append(o)});
+    render();
+  }).catch(()=>{$('#empty').hidden=false;$('#empty').textContent='No se pudo cargar el catálogo. Intente de nuevo.'});
+})();
+</script>
+</body>
+</html>

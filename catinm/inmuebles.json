@@ -1,0 +1,5 @@
+[
+  {"codigo":"CI-0001","ejemplo":true,"operacion":"Venta","tipo":"Apartamento","titulo":"Apartamento de ejemplo en Piantini","zona":"Piantini, Santo Domingo","precio":285000,"moneda":"USD","m2":142,"habitaciones":3,"banos":3.5,"parqueos":2,"descripcion":"Ficha de ejemplo para mostrar el diseño del catálogo. Sustituir por el inmueble real.","fotos":[]},
+  {"codigo":"CI-0002","ejemplo":true,"operacion":"Alquiler","tipo":"Local comercial","titulo":"Local de ejemplo en la Av. Winston Churchill","zona":"Evaristo Morales, Santo Domingo","precio":2200,"moneda":"USD","m2":96,"habitaciones":0,"banos":2,"parqueos":3,"descripcion":"Ficha de ejemplo. Sustituir por el inmueble real.","fotos":[]},
+  {"codigo":"CI-0003","ejemplo":true,"operacion":"Venta","tipo":"Solar","titulo":"Solar de ejemplo en Punta Cana","zona":"Punta Cana, La Altagracia","precio":120000,"moneda":"USD","m2":600,"habitaciones":0,"banos":0,"parqueos":0,"descripcion":"Ficha de ejemplo. Sustituir por el inmueble real.","fotos":[]}
+]
