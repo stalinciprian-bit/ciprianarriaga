@@ -66,6 +66,7 @@ nav a:hover,nav a[aria-current]{color:var(--plum)}
 .cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:6px}
 .btn{display:inline-block;background:var(--navy);color:var(--paper);text-decoration:none;font:600 13px var(--display);letter-spacing:.1em;text-transform:uppercase;padding:11px 16px}
 .btn:hover{background:var(--plum)}
+.tl{color:inherit;text-decoration:none}.tl:hover{color:var(--plum)}
 .cod{font-size:12.5px;color:var(--muted);letter-spacing:.06em}
 .empty{padding:60px 0;text-align:center;color:var(--muted)}
 .note{border-top:1px solid var(--rule);padding-block:22px;font-size:13px;color:var(--muted)}
@@ -120,7 +121,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   const fmt=(n,m)=>(m==='USD'?'USD ':'RD$ ')+Number(n).toLocaleString('en-US');
   let DATA=[],op='';
   function wa(i){
-    const t='Hola, me interesa el inmueble '+i.codigo+' ('+i.titulo+') del catálogo de Ciprián Arriaga & Asocs.';
+    const t='Hola, me interesa el inmueble del letrero N° '+i.letrero+' ('+i.titulo+') del catálogo de Ciprián Arriaga & Asocs.';
     return 'https://wa.me/18098155997?text='+encodeURIComponent(t);
   }
   function card(i){
@@ -133,18 +134,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     if(i.banos) sp.push('<span><b>'+esc(i.banos)+'</b> baños</span>');
     if(i.parqueos) sp.push('<span><b>'+esc(i.parqueos)+'</b> parqueos</span>');
     return '<article class="card"><div class="ph">'+foto+
-      '<span class="tag'+(i.operacion==='Alquiler'?' alq':'')+'">'+esc(i.operacion)+'</span>'+
+      (i.operacion?'<span class="tag'+(i.operacion==='Alquiler'?' alq':'')+'">'+esc(i.operacion)+'</span>':'')+
       (i.ejemplo?'<span class="ej">Ejemplo</span>':'')+'</div>'+
-      '<div class="body"><span class="tipo">'+esc(i.tipo)+'</span><h3>'+esc(i.titulo)+'</h3>'+
+      '<div class="body"><span class="tipo">'+esc(i.tipo)+'</span><h3><a class="tl" href="'+esc(i.letrero)+'/">'+esc(i.titulo)+'</a></h3>'+
       '<div class="zona">'+esc(i.zona)+'</div>'+
-      '<div class="precio">'+fmt(i.precio,i.moneda)+(i.operacion==='Alquiler'?' <small>/ mes</small>':'')+'</div>'+
+      '<div class="precio">'+(i.precio?fmt(i.precio,i.moneda)+(i.operacion==='Alquiler'?' <small>/ mes</small>':''):'<small>Precio a consultar</small>')+'</div>'+
       (sp.length?'<div class="specs">'+sp.join('')+'</div>':'')+
       (i.descripcion?'<p class="desc">'+esc(i.descripcion)+'</p>':'')+
-      '<div class="cta"><a class="btn" href="'+wa(i)+'" target="_blank" rel="noopener">Consultar</a><span class="cod">'+esc(i.codigo)+'</span></div></div></article>';
+      '<div class="cta"><a class="btn" href="'+esc(i.letrero)+'/">Ver presentación</a><span class="cod">Letrero N° '+esc(i.letrero)+'</span></div></div></article>';
   }
   function render(){
     const q=$('#q').value.trim().toLowerCase(), tp=$('#tipo').value;
-    const L=DATA.filter(i=>(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo).toLowerCase().includes(q)));
+    const L=DATA.filter(i=>(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo+' '+i.letrero).toLowerCase().includes(q)));
     $('#grid').innerHTML=L.map(card).join('');
     $('#empty').hidden=L.length>0;
     $('#count').textContent=L.length+(L.length===1?' inmueble':' inmuebles');
