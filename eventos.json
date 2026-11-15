@@ -1,1 +1,87 @@
-{"rc":[{"evento":"Conferencias a Notarios","titulo":"Video","video":"ev/rc-conferencia-notarios.mp4","poster":"ev/rc-conferencia-notarios.jpg","personas":["Rafael Ciprián"]}],"sc":[],"fc":[]}
+{
+ "rc": [
+  {
+   "evento": "Conferencias a Notarios",
+   "titulo": "Video",
+   "video": "ev/rc-conferencia-notarios.mp4",
+   "poster": "ev/rc-conferencia-notarios.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-1.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-2.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-3.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-4.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-5.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-6.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-7.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  },
+  {
+   "evento": "Graduación Colegio Dominicano de Notarios (CODENOT)",
+   "titulo": "Graduación CODENOT",
+   "fecha": "14 de noviembre de 2026",
+   "src": "ev/rc-codenot-graduacion-8.jpg",
+   "personas": [
+    "Rafael Ciprián"
+   ]
+  }
+ ],
+ "sc": [],
+ "fc": []
+}
