@@ -153,7 +153,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   }
   function render(){
     const q=$('#q').value.trim().toLowerCase(), tp=$('#tipo').value;
-    const L=DATA.filter(i=>!i.cerrado&&(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo+' '+i.letrero).toLowerCase().includes(q)));
+    const L=DATA.filter(i=>!i.cerrado&&!i.oculto&&(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo+' '+i.letrero).toLowerCase().includes(q)));
     $('#grid').innerHTML=L.map(card).join('');
     $('#empty').hidden=L.length>0;
     $('#count').textContent=L.length+(L.length===1?' inmueble':' inmuebles');
@@ -162,7 +162,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     op=b.dataset.op;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
   $('#tipo').addEventListener('change',render);$('#q').addEventListener('input',render);
   fetch('inmuebles.json').then(r=>r.json()).then(d=>{
-    DATA=d;[...new Set(d.map(i=>i.tipo))].sort().forEach(t=>{const o=document.createElement('option');o.value=o.textContent=t;$('#tipo').append(o)});
+    DATA=d;[...new Set(d.filter(i=>!i.oculto&&!i.cerrado).map(i=>i.tipo))].sort().forEach(t=>{const o=document.createElement('option');o.value=o.textContent=t;$('#tipo').append(o)});
     render();
   }).catch(()=>{$('#empty').hidden=false;$('#empty').textContent='No se pudo cargar el catálogo. Intente de nuevo.'});
 })();
