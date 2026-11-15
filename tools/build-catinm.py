@@ -11,7 +11,7 @@ extra = '''
 .crumb{padding-block:22px 0;font-size:14px;color:var(--muted)}
 .crumb a{color:var(--plum)}
 .top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;padding-block:20px 48px;align-items:start}
-@media(max-width:820px){.top{grid-template-columns:1fr;gap:24px}}
+@media(max-width:820px){.top{grid-template-columns:minmax(0,1fr);gap:24px;padding-block:12px 32px}.thumbs button{flex-basis:72px}.thumbs img{width:72px;height:54px}.btn{display:block;text-align:center;padding:15px 16px}}
 .gal .main{aspect-ratio:4/3;background:var(--navy);overflow:hidden;position:relative}
 .cerr{background:#EFE9E6;border-left:3px solid var(--rose);padding:14px 16px;margin:0 0 18px;font-size:15px}
 .mantl{margin:14px 0 0;font-size:15px}
