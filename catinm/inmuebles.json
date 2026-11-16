@@ -32,8 +32,7 @@
       "fotos/30/09.jpg",
       "fotos/30/10.jpg"
     ],
-    "oculto": true,
-    "pendiente": true,
+    "oculto": false,
     "mapas": [
       {
         "etiqueta": "Ver ubicación de la playa",
