@@ -302,13 +302,40 @@
   {
     "letrero": "55",
     "codigo": "CI-0055",
-    "tipo": "Inmueble",
-    "titulo": "Letrero N° 55",
+    "tipo": "Apartamento",
+    "titulo": "Apartamento de primer nivel en alquiler",
     "zona": "Santo Domingo",
-    "descripcion": "Presentación en preparación.",
-    "preparacion": true,
+    "operacion": "Alquiler",
+    "precio": 1200,
+    "moneda": "USD",
+    "m2": 160,
+    "habitaciones": 3,
+    "banos": 2,
+    "parqueos": 2,
+    "descripcion": "Apartamento de primer nivel con un área de 160 m², tres habitaciones, 2 baños completos, sala, comedor independiente, balcón, cuarto de servicio con baño, patio y área de lavado. Cuenta con 2 parqueos techados con portón eléctrico.",
+    "caracteristicas": [
+      "Primer nivel, 160 m²",
+      "3 habitaciones y 2 baños completos",
+      "Sala y comedor independiente",
+      "Balcón",
+      "Cuarto de servicio con baño",
+      "Patio y área de lavado",
+      "2 parqueos techados con portón eléctrico"
+    ],
+    "fotos": [
+      "fotos/55/01.jpg",
+      "fotos/55/02.jpg",
+      "fotos/55/03.jpg",
+      "fotos/55/04.jpg",
+      "fotos/55/05.jpg",
+      "fotos/55/06.jpg",
+      "fotos/55/07.jpg",
+      "fotos/55/08.jpg",
+      "fotos/55/09.jpg",
+      "fotos/55/10.jpg"
+    ],
     "oculto": true,
-    "fotos": []
+    "pendiente": true
   },
   {
     "letrero": "56",
