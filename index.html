@@ -388,6 +388,32 @@ footer{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
 /* Recuadros: esquinas redondeadas más amables */
 .tramite,.proceso,.assoc-card,.assoc-empty{border-radius:12px}
 .qr{border-radius:10px}
+/* Diseño moderno: tarjetas, sombras suaves, movimiento sutil */
+.areas{gap:18px;border-top:0}
+.area{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:22px 22px 20px;box-shadow:0 1px 2px rgba(27,42,65,.04);position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.area::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--navy) 0 50%,var(--plum) 50% 70%,var(--rose) 70% 88%,var(--brass) 88% 100%);opacity:.9}
+.area:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(27,42,65,.12);border-color:var(--brass)}
+.area .ico{background:var(--brass-soft);border-radius:12px;padding:8px;width:48px;height:50px;margin-bottom:12px}
+.proceso,.tramite{box-shadow:0 1px 2px rgba(27,42,65,.04);transition:transform .18s ease,box-shadow .18s ease}
+.proceso:hover,.tramite:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(27,42,65,.10)}
+.assoc-card{background:var(--surface);border-style:solid}
+.hero{background:radial-gradient(900px 380px at 85% -10%,var(--brass-soft),transparent 70%),var(--paper)}
+.seal div{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--rose);border-radius:10px;padding:10px 16px}
+.sec-head .eyebrow{display:inline-flex;align-items:center;gap:10px}
+.sec-head .eyebrow::before{content:"";width:28px;height:3px;border-radius:2px;background:var(--rose)}
+.feature{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:26px 28px;border-block-width:1px;box-shadow:0 8px 24px rgba(27,42,65,.06)}
+.ledger{border:1px solid var(--rule);border-radius:12px;background:var(--surface);padding:4px 16px}
+.ledger div:last-child{border-bottom:0}
+.dossier details{border:1px solid var(--rule);border-radius:12px;background:var(--surface);padding:0 16px;margin-top:14px}
+.dossier details[open]{box-shadow:0 6px 18px rgba(27,42,65,.06)}
+.area details{border:0;border-top:1px solid var(--rule);border-radius:0;padding:0;margin-top:14px;background:none}
+.archive li{border-radius:10px;padding-inline:10px;transition:background .15s}
+.archive li:hover{background:var(--brass-soft)}
+.tabs button{transition:color .15s,border-color .15s}
+button,.more,.cat-btn,.social a{transition:transform .15s ease,box-shadow .15s ease,background .15s}
+.more:hover,.cat-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(27,42,65,.18)}
+header{box-shadow:0 2px 14px rgba(27,42,65,.06)}
+.band{border-radius:0}
 </style>
 
 <header>
