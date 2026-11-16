@@ -1,5 +1,30 @@
 [
   {
+    "letrero": "30",
+    "codigo": "CI-0030",
+    "tipo": "Terrenos",
+    "titulo": "Terrenos con playa en Portillo · Las Terrenas",
+    "zona": "Portillo, Las Terrenas, Samaná",
+    "operacion": "Venta",
+    "precio": null,
+    "moneda": "USD",
+    "m2": 1244719.0,
+    "opcion": "Tres parcelas colindantes, con 1,244,719 m² en total",
+    "descripcion": "Tres parcelas en Portillo, Las Terrenas, Samaná, con 1,244,719 m² en total y aproximadamente 1 km de playa: Parcela 5-A-1 (235,824 m²), Parcela 5-A-2 (943,296 m²) y Parcela 6 (65,599 m²), todas del Distrito Catastral No. 06, Municipio y Provincia de Samaná. Títulos con matrícula individual.",
+    "caracteristicas": [
+      "1,244,719 m² en total, en 3 parcelas",
+      "Aproximadamente 1 km de playa",
+      "Parcela 5-A-1: 235,824 m²",
+      "Parcela 5-A-2: 943,296 m²",
+      "Parcela 6: 65,599 m²",
+      "Distrito Catastral No. 06, Municipio de Samaná, Provincia de Samaná",
+      "Cada parcela con su matrícula (título) individual"
+    ],
+    "fotos": [],
+    "oculto": true,
+    "pendiente": true
+  },
+  {
     "letrero": "40",
     "codigo": "CI-0040",
     "tipo": "Conjunto comercial",
