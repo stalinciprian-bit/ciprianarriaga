@@ -20,7 +20,18 @@
       "Distrito Catastral No. 06, Municipio de Samaná, Provincia de Samaná",
       "Cada parcela con su matrícula (título) individual"
     ],
-    "fotos": [],
+    "fotos": [
+      "fotos/30/01.jpg",
+      "fotos/30/02.jpg",
+      "fotos/30/03.jpg",
+      "fotos/30/04.jpg",
+      "fotos/30/05.jpg",
+      "fotos/30/06.jpg",
+      "fotos/30/07.jpg",
+      "fotos/30/08.jpg",
+      "fotos/30/09.jpg",
+      "fotos/30/10.jpg"
+    ],
     "oculto": true,
     "pendiente": true
   },
