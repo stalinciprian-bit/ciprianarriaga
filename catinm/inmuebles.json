@@ -43,7 +43,15 @@
         "etiqueta": "Ver ubicación del frente a la carretera",
         "url": "https://maps.app.goo.gl/R8uFu8DrYQ291hAp9"
       }
-    ]
+    ],
+    "referencias": [
+      "Pueblo de Las Terrenas: 12.7 km, unos 21 minutos en carro",
+      "Cabecera de la provincia de Samaná: 27.6 km, unos 39 minutos",
+      "Aeropuerto internacional de la región: 34.7 km, unos 46 minutos",
+      "Del frente de carretera hasta la playa: unos 2.3 km en línea recta",
+      "Acceso por carretera en la parte sur y acceso por playa en la parte norte"
+    ],
+    "referencias_nota": "Distancias y tiempos aproximados en carro, medidos desde el frente de carretera; pueden variar según el tráfico."
   },
   {
     "letrero": "40",

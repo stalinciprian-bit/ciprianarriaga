@@ -130,6 +130,8 @@ for i in data:
     mapa = f'<p><a href="{esc(i["mapa"])}" target="_blank" rel="noopener">Ver ubicación en el mapa</a></p>' if i.get('mapa') else ''
     if i.get('mapas'):
         mapa = ''.join(f'<p><a href="{esc(m["url"])}" target="_blank" rel="noopener">{esc(m["etiqueta"])}</a></p>' for m in i['mapas'])
+    if i.get('referencias'):
+        mapa = '<h2>Referencias de ubicación</h2><ul>' + ''.join(f'<li>{esc(r)}</li>' for r in i['referencias']) + '</ul>' + (f'<p class="mantl">{esc(i["referencias_nota"])}</p>' if i.get('referencias_nota') else '') + mapa
     pdf = f'<a class="pdfl" href="{esc(i["pdf"])}">Descargar presentación (PDF)</a>' if i.get('pdf') else ''
     oper = i.get('operacion')
     cinta = (f'<span class="cinta{" alq" if oper=="Alquiler" else (" vya" if oper not in ("Venta","Alquiler") else "")}">' +
