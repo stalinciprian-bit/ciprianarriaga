@@ -30,7 +30,7 @@ for i in act:
 <p><b>Área:</b> {i.get('m2','')} m² · {('<b>Hab.:</b> '+str(i['habitaciones'])+' · ') if i.get('habitaciones') else ''} <b>Baños:</b> {i.get('banos','')} · <b>Parqueos:</b> {i.get('parqueos','')}</p>
 <p>{e(i.get('descripcion',''))}</p><ul>{car}</ul>
 <p class="u">Ficha con fotos: {url}</p></div>{f'<img src="{ph}">' if ph else ''}</div>
-<div class="say"><b>Al contestar:</b> «Ciprián Arriaga & Asociados, buenas. Sí, el inmueble del letrero N° {e(i['letrero'])} está disponible en {e(i.get('operacion','venta').lower())}. Le pasamos con el Lic. Stalin Ciprián o le tomamos su nombre y teléfono para que le devuelva la llamada.» Para detalles y fotos: WhatsApp 809-815-5997.</div></section>"""
+<div class="say"><b>Al contestar:</b> «Ciprián Arriaga & Asociados, buenas. Sí, el inmueble del letrero N° {e(i['letrero'])} está disponible en {e(i.get('operacion','venta').lower())}.» <b>Todas las llamadas por inmuebles se pasan al Lic. Stalin Ciprián</b> (que pregunten por él). Si no está: tomar nombre y teléfono para que él devuelva la llamada.</div></section>"""
 prp = ''
 if prep:
     prp = f"<p class='n'><b>Letreros {', '.join(i['letrero'] for i in prep)}:</b> reservados, aún sin información. Si llaman por uno de ellos: tomar nombre y teléfono y avisar al Lic. Stalin.</p>"
