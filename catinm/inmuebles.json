@@ -1,5 +1,200 @@
 [
   {
+    "letrero": "40",
+    "codigo": "CI-0040",
+    "tipo": "Conjunto comercial",
+    "titulo": "Plaza, nave y solares · Ave. Barceló, Punta Cana",
+    "zona": "Ave. Barceló Km 6.5, Midtown, Punta Cana",
+    "operacion": "Venta",
+    "precio": 8210803.5,
+    "moneda": "USD",
+    "precio_nota": "conjunto completo (suma de los 4 componentes)",
+    "m2": 14505.43,
+    "parqueos": 24,
+    "opcion": "Se vende completo o por componente",
+    "descripcion": "Ícono comercial en la Ave. Barceló, Midtown Punta Cana: Plaza Paseo Colonial de 2 niveles con 21 locales y 24 parqueos, una nave comercial de un nivel con 2 locales y dos solares con frente de carretera (10,888.01 m² en conjunto) para un desarrollo propio. Los locales generan rentas activas. Sin mantenimiento mensual ni anual en la nave. Se puede negociar el conjunto completo o cada componente por separado.",
+    "caracteristicas": [
+      "Plaza Paseo Colonial: 2 niveles, 21 locales (12 en el 1er nivel y 9 en el 2do), 24 parqueos, 2 baños externos, depósitos; terreno de 1,870.42 m² y 1,375.39 m² de construcción",
+      "Nave comercial (Casa Cana / Yao): 1 nivel, 2 locales de 200 m² y 400 m², múltiples parqueos al frente; terreno de 1,747 m² y 600 m² de construcción",
+      "Solar #1: 10,187.64 m², frente de carretera, acceso por calle frontal, lateral y trasera",
+      "Solar #2: 700.37 m², frente de carretera, acceso por calle lateral y trasera",
+      "Frente lineal de los solares: 51.97 m, con diversos accesos"
+    ],
+    "lotes": [
+      {
+        "nombre": "Plaza Paseo Colonial (21 locales)",
+        "m2": 1870.42,
+        "precio": 2900000.0
+      },
+      {
+        "nombre": "Nave comercial Casa Cana / Yao (2 locales)",
+        "m2": 1747.0,
+        "precio": 1500000.0
+      },
+      {
+        "nombre": "Solar #1 (USD$350 / m²)",
+        "m2": 10187.64,
+        "precio": 3565674.0
+      },
+      {
+        "nombre": "Solar #2 (USD$350 / m²)",
+        "m2": 700.37,
+        "precio": 245129.5
+      }
+    ],
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Plaza+Paseo+Colonial+Ave+Barcel%C3%B3+Punta+Cana",
+    "fotos": [
+      "fotos/40/01.jpg",
+      "fotos/40/02.jpg",
+      "fotos/40/03.jpg",
+      "fotos/40/04.jpg",
+      "fotos/40/05.jpg",
+      "fotos/40/06.jpg"
+    ],
+    "oculto": true,
+    "pendiente": true
+  },
+  {
+    "letrero": "41",
+    "codigo": "CI-0041",
+    "tipo": "Terrenos",
+    "titulo": "Solares en Cabo Engaño · Punta Cana",
+    "zona": "Cabo Engaño, junto al campo de golf Los Corales y detrás del Aeropuerto Internacional de Punta Cana",
+    "operacion": "Venta",
+    "precio": 35198702.0,
+    "moneda": "USD",
+    "precio_nota": "los 3 solares completos (USD$200 / m²)",
+    "m2": 175993.51,
+    "opcion": "Se vende completo o por solar",
+    "descripcion": "Tres solares frente al mar en Cabo Engaño, al lado del campo de golf Los Corales y detrás del Aeropuerto Internacional de Punta Cana, con 175,993.51 m² en total a USD$200 por m². Se puede negociar el conjunto completo o cada solar por separado.",
+    "caracteristicas": [
+      "Terreno de 175,993.51 m² en total, en 3 solares",
+      "Precio: USD$200 por m²",
+      "Ubicado junto al campo de golf Los Corales y detrás del Aeropuerto Internacional de Punta Cana",
+      "Planos catastrales individuales disponibles"
+    ],
+    "lotes": [
+      {
+        "nombre": "Solar #1",
+        "m2": 35218.7,
+        "precio": 7043740.0
+      },
+      {
+        "nombre": "Solar #2",
+        "m2": 35218.7,
+        "precio": 7043740.0
+      },
+      {
+        "nombre": "Solar #3",
+        "m2": 105556.11,
+        "precio": 21111222.0
+      }
+    ],
+    "mapa": "https://www.google.com/maps?q=18.570246,-68.337527",
+    "fotos": [
+      "fotos/41/01.jpg",
+      "fotos/41/02.jpg",
+      "fotos/41/03.jpg",
+      "fotos/41/04.jpg"
+    ],
+    "oculto": true,
+    "pendiente": true
+  },
+  {
+    "letrero": "42",
+    "codigo": "CI-0042",
+    "tipo": "Terrenos",
+    "titulo": "Solares detrás de San Juan Lakes · Bávaro",
+    "zona": "Bávaro, detrás de San Juan Shopping Center y de San Juan Lakes",
+    "operacion": "Venta",
+    "precio": 16979701.45,
+    "moneda": "USD",
+    "precio_nota": "los 3 solares completos (USD$185 / m²)",
+    "m2": 91782.17,
+    "opcion": "Se vende completo o por solar",
+    "descripcion": "Tres solares en Bávaro, detrás de San Juan Shopping Center y específicamente detrás de San Juan Lakes, con 91,782.17 m² en total a USD$185 por m². Se puede negociar el conjunto completo o cada solar por separado.",
+    "caracteristicas": [
+      "Terreno de 91,782.17 m² en total, en 3 solares",
+      "Precio: USD$185 por m²",
+      "Detrás de San Juan Shopping Center y de San Juan Lakes, Bávaro",
+      "Plano catastral general disponible"
+    ],
+    "lotes": [
+      {
+        "nombre": "Solar #1",
+        "m2": 55071.05,
+        "precio": 10188144.25
+      },
+      {
+        "nombre": "Solar #2",
+        "m2": 18355.56,
+        "precio": 3395778.6
+      },
+      {
+        "nombre": "Solar #3",
+        "m2": 18355.56,
+        "precio": 3395778.6
+      }
+    ],
+    "mapa": "https://www.google.com/maps?q=18.644704,-68.396009",
+    "fotos": [
+      "fotos/42/01.jpg",
+      "fotos/42/02.jpg",
+      "fotos/42/03.jpg",
+      "fotos/42/04.jpg",
+      "fotos/42/05.jpg"
+    ],
+    "oculto": true,
+    "pendiente": true
+  },
+  {
+    "letrero": "43",
+    "codigo": "CI-0043",
+    "tipo": "Terrenos",
+    "titulo": "Solares en Cruce de Domingo Maíz · Bávaro",
+    "zona": "Cruce de Domingo Maíz, Verón, Bávaro, Punta Cana",
+    "operacion": "Venta",
+    "precio": 11714243.75,
+    "moneda": "USD",
+    "precio_nota": "los 3 solares completos (USD$125 / m²)",
+    "m2": 93713.95,
+    "opcion": "Se vende completo o por solar",
+    "descripcion": "Tres solares disponibles en el Cruce de Domingo Maíz, Verón, Bávaro, con 93,713.95 m² en total a USD$125 por m², dentro de un terreno de 119,107 m² con 175 metros de frente en la calle de Verón. Vocación comercial, residencial e industrial. Se puede negociar el conjunto completo o cada solar por separado.",
+    "caracteristicas": [
+      "Terreno de 93,713.95 m² disponibles en 3 solares (otro solar del plano ya fue vendido)",
+      "Precio: USD$125 por m²",
+      "Terreno matriz de 119,107 m², con 175 metros de frente en la calle de Verón",
+      "Vocación: comercial, residencial e industrial",
+      "El trazado de calle propuesto es de interés actual del ayuntamiento; el trabajo técnico se aprobará junto con la venta"
+    ],
+    "lotes": [
+      {
+        "nombre": "Solar #1",
+        "m2": 56228.37,
+        "precio": 7028546.25
+      },
+      {
+        "nombre": "Solar #2",
+        "m2": 18742.79,
+        "precio": 2342848.75
+      },
+      {
+        "nombre": "Solar #3",
+        "m2": 18742.79,
+        "precio": 2342848.75
+      }
+    ],
+    "mapa": "https://www.google.com/maps?q=18.591249,-68.408260",
+    "fotos": [
+      "fotos/43/01.jpg",
+      "fotos/43/02.jpg",
+      "fotos/43/03.jpg",
+      "fotos/43/04.jpg"
+    ],
+    "oculto": true,
+    "pendiente": true
+  },
+  {
     "letrero": "53",
     "codigo": "CI-0053",
     "tipo": "Apartamento",

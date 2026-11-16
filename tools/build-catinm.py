@@ -15,6 +15,7 @@ extra = '''
 .gal .main{aspect-ratio:4/3;background:var(--navy);overflow:hidden;position:relative}
 .cerr{background:#EFE9E6;border-left:3px solid var(--rose);padding:14px 16px;margin:0 0 18px;font-size:15px}
 .mantl{margin:14px 0 0;font-size:15px}
+.lotes{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:15px}.lotes th,.lotes td{padding:9px 10px;border-bottom:1px solid #d9dce3;text-align:left}.lotes th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5a6577}.lotes td:nth-child(n+2),.lotes th:nth-child(n+2){text-align:right;white-space:nowrap}.opc{margin:12px 0 0;font-weight:700;color:#1B2A41}
 .gal .main img{width:100%;height:100%;object-fit:cover;display:block}
 .gal .main .none{position:absolute;inset:0;display:grid;place-items:center;background:var(--logo-bg)}
 .gal .main .none img{width:40%;height:auto}
@@ -116,11 +117,13 @@ for i in data:
     else:
         main = '<div class="none"><img src="../../logo-ca.webp" alt=""></div>'; thumbs = ''; ogimg = 'logo-completo.webp'
     sp = []
-    if i.get('m2'): sp.append(f'<span><b>{esc(i["m2"])}</b> m²</span>')
+    if i.get('m2'): sp.append(f'<span><b>{float(i["m2"]):,.2f}</b> m²</span>' if float(i['m2']) != int(float(i['m2'])) or float(i['m2']) >= 1000 else f'<span><b>{esc(i["m2"])}</b> m²</span>')
     if i.get('habitaciones'): sp.append(f'<span><b>{esc(i["habitaciones"])}</b> hab.</span>')
     if i.get('banos'): sp.append(f'<span><b>{esc(i["banos"])}</b> baños</span>')
     if i.get('parqueos'): sp.append(f'<span><b>{esc(i["parqueos"])}</b> parqueos</span>')
-    precio = (money(i['precio'], i.get('moneda')) + (' <small>/ mes</small>' if i.get('operacion') == 'Alquiler' else '')) if i.get('precio') else '<small>Precio a consultar</small>'
+    precio = (money(i['precio'], i.get('moneda')) + (' <small>/ mes</small>' if i.get('operacion') == 'Alquiler' else (f' <small>{esc(i["precio_nota"])}</small>' if i.get('precio_nota') else ''))) if i.get('precio') else '<small>Precio a consultar</small>'
+    opc = f'<p class="opc">{esc(i["opcion"])}</p>' if i.get('opcion') else ''
+    lot = ('<h2>Precio por lote</h2><table class="lotes"><tr><th>Lote</th><th>Área</th><th>Precio</th></tr>' + ''.join(f'<tr><td>{esc(l["nombre"])}</td><td>{float(l["m2"]):,.2f} m²</td><td>{money(l["precio"], i.get("moneda"))}</td></tr>' for l in i['lotes']) + '</table>') if i.get('lotes') else ''
     wa = 'https://wa.me/18098155997?text=' + __import__('urllib.parse').parse.quote(f'Hola, me interesa el inmueble del letrero N° {let} ({i["titulo"]}) del catálogo de Ciprián Arriaga & Asocs.')
     feat_ = ('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else ''
     legal = f'<h2>Situación legal</h2><p>{esc(i["legal"])}</p>' if i.get('legal') else ''
@@ -135,13 +138,20 @@ for i in data:
     cerr = '<p class="cerr"><b>Este inmueble ya no está disponible.</b> Vea otras opciones en el <a href="../">catálogo</a>.</p>' if i.get('cerrado') else ''
     btns = '' if i.get('cerrado') else (f'<a class="btn" href="{wa}" target="_blank" rel="noopener">Consultar por WhatsApp</a>\n      <a class="btn alt" href="tel:+18095333060">Llamar al 809-533-3060</a>')
     dest = f'<span class="dest" style="margin-bottom:14px">★ {esc(i["destacado"])} ★</span><br>' if i.get('destacado') else ''
-    page = tpl.format(dest=dest, cinta=cinta, mant=mant, cerr=cerr, btns=btns, 
+    page = tpl.format(dest=dest, cinta=cinta, mant=mant + opc, cerr=cerr, btns=btns, 
         css=css, extra=extra, titulo=esc(i['titulo']), zona=esc(i['zona']), let=esc(let), codigo=esc(i.get('codigo', '')), ogimg=ogimg,
         main=main, thumbs=thumbs, tipo=esc(i['tipo']), oper=(' · ' + esc(i['operacion'])) if i.get('operacion') else '',
         precio=precio, specs=('<div class="specs">' + ''.join(sp) + '</div>') if sp else '', wa=wa, pdf=pdf,
         prep='<p class="prep">Presentación en preparación. Escríbanos y le damos todos los detalles.</p>' if i.get('preparacion') else '',
         desc=(f'<h2>Descripción</h2><p>{esc(i["descripcion"])}</p>' if i.get('descripcion') and not i.get('preparacion') else ''),
-        feat=('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else '', legal=legal, mapa=mapa)
+        feat=('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else '', legal=legal, mapa=mapa) if not i.get('lotes') else None
+    if i.get('lotes'):
+        page = tpl.format(dest=dest, cinta=cinta, mant=mant + opc, cerr=cerr, btns=btns,
+            css=css, extra=extra, titulo=esc(i['titulo']), zona=esc(i['zona']), let=esc(let), codigo=esc(i.get('codigo', '')), ogimg=ogimg,
+            main=main, thumbs=thumbs, tipo=esc(i['tipo']), oper=(' · ' + esc(i['operacion'])) if i.get('operacion') else '',
+            precio=precio, specs=('<div class="specs">' + ''.join(sp) + '</div>') if sp else '', wa=wa, pdf=pdf,
+            prep='', desc=f'<h2>Descripción</h2><p>{esc(i["descripcion"])}</p>',
+            feat=lot + ('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>' if i.get('caracteristicas') else ''), legal=legal, mapa=mapa)
     out = cat / let; out.mkdir(exist_ok=True)
     (out / 'index.html').write_text(page, encoding='utf8')
     print('ok', f'catinm/{let}/')

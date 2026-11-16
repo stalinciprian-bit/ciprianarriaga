@@ -159,7 +159,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
       ? '<img src="'+esc(i.fotos[0])+'" alt="'+esc(i.titulo)+'" loading="lazy">'
       : '<div class="none"><img src="../logo-ca.webp" alt=""></div>';
     const sp=[];
-    if(i.m2) sp.push('<span><b>'+esc(i.m2)+'</b> m²</span>');
+    if(i.m2) sp.push('<span><b>'+Number(i.m2).toLocaleString('en-US',{maximumFractionDigits:2})+'</b> m²</span>');
     if(i.habitaciones) sp.push('<span><b>'+esc(i.habitaciones)+'</b> hab.</span>');
     if(i.banos) sp.push('<span><b>'+esc(i.banos)+'</b> baños</span>');
     if(i.parqueos) sp.push('<span><b>'+esc(i.parqueos)+'</b> parqueos</span>');
