@@ -110,6 +110,25 @@ footer{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
 /* Recuadros: tarjetas redondeadas (la foto queda recortada por el borde de la tarjeta) */
 .card{border-radius:12px;overflow:hidden}
 .prep,.cerr{border-radius:10px}
+/* Banner de inmuebles privilegiados */
+.priv{background:#1B2A41;color:#F7F6F2;padding-block:34px 38px;border-bottom:5px solid #C9A227}
+.priv .eyebrow{color:#F2C230}
+.priv h2{font-size:clamp(26px,3.6vw,38px);margin:10px 0 6px;color:#F7F6F2}
+.priv .sub{margin:0 0 22px;color:#c9d1db;max-width:62ch}
+.priv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.pcard{display:flex;flex-direction:column;background:#fff;color:#1B2A41;border-radius:12px;overflow:hidden;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .15s}
+.pcard:hover{transform:translateY(-3px)}
+.pcard .pf{position:relative;aspect-ratio:16/10;background:#1B2A41}
+.pcard .pf img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard .pt{position:absolute;left:12px;top:12px;background:#F2C230;color:#1B2A41;font:700 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:6px}
+.pcard .pt.alq{background:#C9577F;color:#fff}
+.pcard .pb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pcard h3{font-size:20px;line-height:1.2}
+.pcard .pz{color:#5B6670;font-size:14.5px}
+.pcard .pp{font:700 24px/1.1 var(--display);margin-top:6px}
+.pcard .pp small{font:400 14px var(--display);color:#5B6670}
+.pcard .pv{margin-top:auto;padding-top:10px;font:700 12.5px var(--display);letter-spacing:.1em;text-transform:uppercase;color:#4B2E6F}
+@media(max-width:640px){.priv{padding-block:26px 28px}.priv-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -129,6 +148,12 @@ footer{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
     <span class="eyebrow">Catálogo inmobiliario</span>
     <h1>Inmuebles con <em>respaldo jurídico</em></h1>
     <p>Propiedades en venta y alquiler, revisadas por nuestro despacho: título, registro e impuestos al día antes de ofrecerlas.</p>
+  </div></section>
+  <section class="priv" id="priv" aria-labelledby="priv-t" hidden><div class="wrap">
+    <span class="eyebrow">★ Privilegiados</span>
+    <h2 id="priv-t">Oportunidades que no debe dejar pasar</h2>
+    <p class="sub">Una venta de alto valor y alquileres seleccionados, listos para visitar.</p>
+    <div class="priv-grid" id="priv-grid"></div>
   </div></section>
   <div class="wrap">
     <div class="filters">
@@ -200,6 +225,15 @@ footer{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
   function hay(i){
     return norm([i.tipo,i.titulo,i.zona,i.descripcion,(i.caracteristicas||[]).join(' '),i.codigo,'letrero inmueble '+i.letrero,i.operacion,i.destacado,i.m2&&i.m2+' m2',i.habitaciones&&i.habitaciones+' habitaciones hab',i.banos&&i.banos+' banos',i.parqueos&&i.parqueos+' parqueos',i.precio&&String(i.precio)].join(' ')).replace(/[^a-z0-9ñ ]/g,' ');
   }
+  function pcard(i){
+    const foto=(i.fotos&&i.fotos[0])?'<img src="'+esc(i.fotos[0])+'" alt="'+esc(i.titulo)+'" loading="lazy">':'<img src="../logo-ca.webp" alt="" style="object-fit:contain;padding:18%">';
+    const alq=i.operacion==='Alquiler';
+    return '<a class="pcard" href="'+esc(i.letrero)+'/"><div class="pf">'+foto+'<span class="pt'+(alq?' alq':'')+'">'+(alq?'En alquiler':'En venta')+'</span></div><div class="pb"><h3>'+esc(i.titulo)+'</h3><div class="pz">'+esc(i.zona)+'</div><div class="pp">'+(i.precio?fmt(i.precio,i.moneda)+(alq?' <small>/ mes</small>':''):'<small>Precio a consultar</small>')+'</div><span class="pv">Ver presentación →</span></div></a>';
+  }
+  function renderPriv(){
+    const P=DATA.filter(i=>i.privilegiado&&!i.oculto&&!i.cerrado).sort((a,b)=>(a.operacion==='Venta'?0:1)-(b.operacion==='Venta'?0:1)||Number(a.letrero)-Number(b.letrero));
+    $('#priv-grid').innerHTML=P.map(pcard).join('');$('#priv').hidden=!P.length;
+  }
   function render(){
     const raw=$('#q').value, tp=$('#tipo').value, P=parseQ(raw);
     const mon=$('#mon').value||P.mon, o2=op||P.op;
@@ -227,7 +261,7 @@ footer{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
   fetch('inmuebles.json').then(r=>r.json()).then(d=>{
     DATA=d;[...new Set(d.filter(i=>!i.oculto&&!i.cerrado).map(i=>i.tipo))].sort().forEach(t=>{const o=document.createElement('option');o.value=o.textContent=t;$('#tipo').append(o)});
     const qp=new URLSearchParams(location.search).get('q');if(qp)$('#q').value=qp;
-    render();
+    renderPriv();render();
   }).catch(()=>{$('#empty').hidden=false;$('#empty').textContent='No se pudo cargar el catálogo. Intente de nuevo.'});
 })();
 </script>

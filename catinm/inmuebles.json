@@ -302,7 +302,8 @@
     "precio": 380000,
     "moneda": "USD",
     "destacado": "Oportunidad",
-    "mapa": "https://maps.app.goo.gl/V4EKDkFVgoWLRKZY8?g_st=iw"
+    "mapa": "https://maps.app.goo.gl/V4EKDkFVgoWLRKZY8?g_st=iw",
+    "privilegiado": true
   },
   {
     "letrero": "54",
@@ -349,7 +350,8 @@
       "fotos/54/17.jpg",
       "fotos/54/18.jpg"
     ],
-    "mapa": "https://www.google.com/maps?q=18.481332,-69.938482"
+    "mapa": "https://www.google.com/maps?q=18.481332,-69.938482",
+    "privilegiado": true
   },
   {
     "letrero": "55",
@@ -387,7 +389,8 @@
       "fotos/55/10.jpg"
     ],
     "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Turey+252,+El+Cacique,+Santo+Domingo",
-    "mantenimiento": "incluido en el precio"
+    "mantenimiento": "incluido en el precio",
+    "privilegiado": true
   },
   {
     "letrero": "56",
