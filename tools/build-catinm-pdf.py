@@ -24,16 +24,16 @@ for i in act:
     dest = f"<span class='dest'>{e(i['destacado']).upper()}</span>" if i.get('destacado') else ''
     ph = img(i['fotos'][0]) if i.get('fotos') else ''
     url = f"ciprianarriaga.com/catinm/{i['letrero']}/"
-    pg += f"""<section class="pg"><div class="h"><h2>Letrero N° {e(i['letrero'])} · {e(i['codigo'])} {dest}</h2><div class="op">{e(i.get('operacion',''))}</div></div>
+    pg += f"""<section class="pg"><div class="h"><h2>Inmueble No. {e(i['letrero'])} · {e(i['codigo'])} {dest}</h2><div class="op">{e(i.get('operacion',''))}</div></div>
 <h3>{e(i['titulo'])}</h3><p class="z">{e(i['zona'])}</p>
 <div class="g"><div><div class="pr">{e(money(i))}</div>{mant}
 <p><b>Área:</b> {i.get('m2','')} m² · {('<b>Hab.:</b> '+str(i['habitaciones'])+' · ') if i.get('habitaciones') else ''} <b>Baños:</b> {i.get('banos','')} · <b>Parqueos:</b> {i.get('parqueos','')}</p>
 <p>{e(i.get('descripcion',''))}</p><ul>{car}</ul>
 <p class="u">Ficha con fotos: {url}</p></div>{f'<img src="{ph}">' if ph else ''}</div>
-<div class="say"><b>Al contestar:</b> «Ciprián Arriaga & Asociados, buenas. Sí, el inmueble del letrero N° {e(i['letrero'])} está disponible en {e(i.get('operacion','venta').lower())}.» <b>Todas las llamadas por inmuebles se pasan al Lic. Stalin Ciprián</b> (que pregunten por él). Si no está: tomar nombre y teléfono para que él devuelva la llamada.</div></section>"""
+<div class="say"><b>Al contestar:</b> «Ciprián Arriaga & Asociados, buenas. Sí, el Inmueble No. {e(i['letrero'])} está disponible en {e(i.get('operacion','venta').lower())}.» <b>Todas las llamadas por inmuebles se pasan al Lic. Stalin Ciprián</b> (que pregunten por él). Si no está: tomar nombre y teléfono para que él devuelva la llamada.</div></section>"""
 prp = ''
 if prep:
-    prp = f"<p class='n'><b>Letreros {', '.join(i['letrero'] for i in prep)}:</b> reservados, aún sin información. Si llaman por uno de ellos: tomar nombre y teléfono y avisar al Lic. Stalin.</p>"
+    prp = f"<p class='n'><b>Inmuebles {', '.join(i['letrero'] for i in prep)}:</b> reservados, aún sin información. Si llaman por uno de ellos: tomar nombre y teléfono y avisar al Lic. Stalin.</p>"
 doc = f"""<html><meta charset=utf-8><style>
 @page{{size:Letter;margin:14mm}}body{{font:11pt Arial,sans-serif;color:#1b2a41}}
 .top{{display:flex;align-items:center;gap:12px;border-bottom:3px solid #1b2a41;padding-bottom:8px}}.top img{{height:50px}}
@@ -47,7 +47,7 @@ h2{{margin:0;font-size:15pt}}h3{{margin:6px 0 0}}.z{{color:#555;margin:2px 0 10p
 </style>
 <div class="top"><img src="{logo}"><div><h1>Catálogo de inmuebles · Guía para recepción</h1><small>Actualizado: {hoy} · Tel. oficina 809-533-3060</small></div></div>
 <h3>Resumen ({len(act)} disponible{'s' if len(act)!=1 else ''})</h3>
-<table><tr><th>Letrero</th><th>Tipo</th><th>Operación</th><th>Precio</th><th>Zona</th><th>Área</th><th>Hab.</th></tr>{rows}</table>{prp}{pg}</html>"""
+<table><tr><th>N°</th><th>Tipo</th><th>Operación</th><th>Precio</th><th>Zona</th><th>Área</th><th>Hab.</th></tr>{rows}</table>{prp}{pg}</html>"""
 with sync_playwright() as p:
     b = p.chromium.launch(); pgx = b.new_page(); pgx.set_content(doc); pgx.pdf(path=out, format='Letter', print_background=True, prefer_css_page_size=True); b.close()
 print(out)

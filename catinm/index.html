@@ -129,7 +129,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
         <button type="button" data-op="Alquiler" aria-pressed="false">Alquiler</button>
       </div>
       <label>Tipo<select id="tipo"><option value="">Todos</option></select></label>
-      <label class="qw">Buscar<input id="q" type="search" placeholder="Ej.: apartamento Naco venta, letrero 53, hasta 400000" autocomplete="off" enterkeyhint="search"></label>
+      <label class="qw">Buscar<input id="q" type="search" placeholder="Ej.: apartamento Naco venta, inmueble 53, hasta 400000" autocomplete="off" enterkeyhint="search"></label>
       <label>Precio mín.<input id="pmin" type="text" inputmode="numeric" placeholder="0"></label>
       <label>Precio máx.<input id="pmax" type="text" inputmode="numeric" placeholder="Sin límite"></label>
       <label>Moneda<select id="mon"><option value="">Todas</option><option value="USD">USD$</option><option value="DOP">RD$</option></select></label>
@@ -151,7 +151,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
   const fmt=(n,m)=>(m==='USD'?'USD$':'RD$')+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
   let DATA=[],op='';
   function wa(i){
-    const t='Hola, me interesa el inmueble del letrero N° '+i.letrero+' ('+i.titulo+') del catálogo de Ciprián Arriaga & Asocs.';
+    const t='Hola, me interesa el Inmueble No. '+i.letrero+' ('+i.titulo+') del catálogo de Ciprián Arriaga & Asocs.';
     return 'https://wa.me/18098155997?text='+encodeURIComponent(t);
   }
   function card(i){
@@ -172,7 +172,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
       (sp.length?'<div class="specs">'+sp.join('')+'</div>':'')+
       (i.mantenimiento?'<div class="mant">Mantenimiento: '+esc(i.mantenimiento)+'</div>':'')+
       (i.descripcion?'<p class="desc">'+esc(i.descripcion)+'</p>':'')+
-      '<div class="cta"><a class="btn" href="'+esc(i.letrero)+'/">Ver presentación</a><span class="cod">Letrero N° '+esc(i.letrero)+'</span></div></div></article>';
+      '<div class="cta"><a class="btn" href="'+esc(i.letrero)+'/">Ver presentación</a><span class="cod">Inmueble No. '+esc(i.letrero)+'</span></div></div></article>';
   }
   const norm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   const num=t=>{const n=parseFloat(String(t).replace(/[^\d.]/g,''));return isNaN(n)?null:n};
@@ -184,12 +184,12 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
     if(/\b(rd\$|dop|pesos?)\b/.test(t)){o.mon='DOP';t=t.replace(/\b(rd\$|dop|pesos?)\b/g,' ')}
     if(/\b(venta|vender|comprar|compra|se vende)\b/.test(t)){o.op='Venta';t=t.replace(/\b(venta|vender|comprar|compra|se vende)\b/g,' ')}
     if(/\b(alquiler|alquilar|renta|rentar|se alquila)\b/.test(t)){o.op='Alquiler';t=t.replace(/\b(alquiler|alquilar|renta|rentar|se alquila)\b/g,' ')}
-    t=t.replace(/\b(letrero|rotulo|no|n°|nro|numero|num)\b\.?/g,' ').replace(/[^a-z0-9ñ ]/g,' ');
+    t=t.replace(/\b(letrero|inmueble|rotulo|no|n°|nro|numero|num)\b\.?/g,' ').replace(/[^a-z0-9ñ ]/g,' ');
     o.words=t.split(/\s+/).filter(Boolean);
     return o;
   }
   function hay(i){
-    return norm([i.tipo,i.titulo,i.zona,i.descripcion,(i.caracteristicas||[]).join(' '),i.codigo,'letrero '+i.letrero,i.operacion,i.destacado,i.m2&&i.m2+' m2',i.habitaciones&&i.habitaciones+' habitaciones hab',i.banos&&i.banos+' banos',i.parqueos&&i.parqueos+' parqueos',i.precio&&String(i.precio)].join(' ')).replace(/[^a-z0-9ñ ]/g,' ');
+    return norm([i.tipo,i.titulo,i.zona,i.descripcion,(i.caracteristicas||[]).join(' '),i.codigo,'letrero inmueble '+i.letrero,i.operacion,i.destacado,i.m2&&i.m2+' m2',i.habitaciones&&i.habitaciones+' habitaciones hab',i.banos&&i.banos+' banos',i.parqueos&&i.parqueos+' parqueos',i.precio&&String(i.precio)].join(' ')).replace(/[^a-z0-9ñ ]/g,' ');
   }
   function render(){
     const raw=$('#q').value, tp=$('#tipo').value, P=parseQ(raw);

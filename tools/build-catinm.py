@@ -46,10 +46,10 @@ tpl = '''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{titulo} · Letrero N° {let} · Ciprián Arriaga &amp; Asocs.</title>
-<meta name="description" content="{titulo}, {zona}. Presentación del inmueble del letrero N° {let}. Ciprián Arriaga &amp; Asocs., Abogados Notarios.">
+<title>{titulo} · Inmueble No. {let} · Ciprián Arriaga &amp; Asocs.</title>
+<meta name="description" content="{titulo}, {zona}. Presentación del Inmueble No. {let}. Ciprián Arriaga &amp; Asocs., Abogados Notarios.">
 <meta property="og:title" content="{titulo}">
-<meta property="og:description" content="{zona} · Letrero N° {let}">
+<meta property="og:description" content="{zona} · Inmueble No. {let}">
 <meta property="og:image" content="https://www.ciprianarriaga.com/{ogimg}">
 <link rel="icon" href="../../logo-ca.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,7 +69,7 @@ tpl = '''<!doctype html>
   </div>
 </header>
 <main class="wrap">
-  <p class="crumb"><a href="../">Catálogo inmobiliario</a> › Letrero N° {let}</p>
+  <p class="crumb"><a href="../">Catálogo inmobiliario</a> › Inmueble No. {let}</p>
   <div class="top">
     <div class="gal">
       <div class="main" id="main">{cinta}{main}</div>
@@ -84,7 +84,7 @@ tpl = '''<!doctype html>
       {specs}{mant}
       {btns}
       {pdf}
-      <span class="let">Letrero N° {let} · {codigo}</span>
+      <span class="let">Inmueble No. {let} · {codigo}</span>
     </div>
   </div>
   <div class="det">
@@ -124,7 +124,7 @@ for i in data:
     precio = (money(i['precio'], i.get('moneda')) + (' <small>/ mes</small>' if i.get('operacion') == 'Alquiler' else (f' <small>{esc(i["precio_nota"])}</small>' if i.get('precio_nota') else ''))) if i.get('precio') else '<small>Precio a consultar</small>'
     opc = f'<p class="opc">{esc(i["opcion"])}</p>' if i.get('opcion') else ''
     lot = ('<h2>Precio por lote</h2><table class="lotes"><tr><th>Lote</th><th>Área</th><th>Precio</th></tr>' + ''.join(f'<tr><td>{esc(l["nombre"])}</td><td>{float(l["m2"]):,.2f} m²</td><td>{money(l["precio"], i.get("moneda"))}</td></tr>' for l in i['lotes']) + '</table>') if i.get('lotes') else ''
-    wa = 'https://wa.me/18098155997?text=' + __import__('urllib.parse').parse.quote(f'Hola, me interesa el inmueble del letrero N° {let} ({i["titulo"]}) del catálogo de Ciprián Arriaga & Asocs.')
+    wa = 'https://wa.me/18098155997?text=' + __import__('urllib.parse').parse.quote(f'Hola, me interesa el Inmueble No. {let} ({i["titulo"]}) del catálogo de Ciprián Arriaga & Asocs.')
     feat_ = ('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else ''
     legal = f'<h2>Situación legal</h2><p>{esc(i["legal"])}</p>' if i.get('legal') else ''
     mapa = f'<p><a href="{esc(i["mapa"])}" target="_blank" rel="noopener">Ver ubicación en el mapa</a></p>' if i.get('mapa') else ''
