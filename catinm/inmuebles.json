@@ -33,7 +33,17 @@
       "fotos/30/10.jpg"
     ],
     "oculto": true,
-    "pendiente": true
+    "pendiente": true,
+    "mapas": [
+      {
+        "etiqueta": "Ver ubicación de la playa",
+        "url": "https://maps.app.goo.gl/BhLndNPTdfi1tRkE9"
+      },
+      {
+        "etiqueta": "Ver ubicación del frente a la carretera",
+        "url": "https://maps.app.goo.gl/R8uFu8DrYQ291hAp9"
+      }
+    ]
   },
   {
     "letrero": "40",

@@ -128,6 +128,8 @@ for i in data:
     feat_ = ('<h2>Características</h2><ul>' + ''.join(f'<li>{esc(c)}</li>' for c in i['caracteristicas']) + '</ul>') if i.get('caracteristicas') else ''
     legal = f'<h2>Situación legal</h2><p>{esc(i["legal"])}</p>' if i.get('legal') else ''
     mapa = f'<p><a href="{esc(i["mapa"])}" target="_blank" rel="noopener">Ver ubicación en el mapa</a></p>' if i.get('mapa') else ''
+    if i.get('mapas'):
+        mapa = ''.join(f'<p><a href="{esc(m["url"])}" target="_blank" rel="noopener">{esc(m["etiqueta"])}</a></p>' for m in i['mapas'])
     pdf = f'<a class="pdfl" href="{esc(i["pdf"])}">Descargar presentación (PDF)</a>' if i.get('pdf') else ''
     oper = i.get('operacion')
     cinta = (f'<span class="cinta{" alq" if oper=="Alquiler" else (" vya" if oper not in ("Venta","Alquiler") else "")}">' +
