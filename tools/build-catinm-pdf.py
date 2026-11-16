@@ -8,7 +8,7 @@ d = json.load(open(R/'catinm/inmuebles.json'))
 e = html.escape
 def money(i):
     if not i.get('precio'): return 'Consultar'
-    return ('USD$' if i.get('moneda')=='USD' else 'RD$') + f"{float(i['precio']):,.2f}"
+    return ('USD$' if i.get('moneda')=='USD' else 'RD$') + f"{float(i['precio']):,.2f}" + (' al mes' if i.get('operacion')=='Alquiler' else '')
 def img(p):
     f = R/'catinm'/p
     return 'data:image/jpeg;base64,'+base64.b64encode(f.read_bytes()).decode() if f.exists() else ''
@@ -16,18 +16,18 @@ act = [i for i in d if not i.get('oculto') and not i.get('cerrado')]
 prep = [i for i in d if i.get('oculto') and i.get('preparacion')]
 logo = 'data:image/webp;base64,'+base64.b64encode((R/'logo-ca.webp').read_bytes()).decode()
 hoy = datetime.date.today().strftime('%d/%m/%Y')
-rows = ''.join(f"<tr><td><b>{e(i['letrero'])}</b></td><td>{e(i['tipo'])}</td><td>{e(i.get('operacion',''))}</td><td>{e(money(i))}</td><td>{e(i['zona'])}</td><td>{i.get('m2','')} m²</td><td>{i.get('habitaciones','')}</td></tr>" for i in act)
+rows = ''.join(f"<tr><td><b>{e(i['letrero'])}</b></td><td>{e(i['tipo'])}</td><td>{e(i.get('operacion',''))}</td><td>{e(money(i))}</td><td>{e(i['zona'])}</td><td>{i.get('m2','')} m²</td><td>{i.get('habitaciones','—')}</td></tr>" for i in act)
 pg = ''
 for i in act:
     car = ''.join(f'<li>{e(c)}</li>' for c in i.get('caracteristicas',[]))
-    mant = f"<p><b>Mantenimiento:</b> {e(i['mantenimiento'])}</p>" if i.get('mantenimiento') else ''
+    mant = f"<p><b>Mantenimiento:</b> {e(i['mantenimiento'][0].upper()+i['mantenimiento'][1:])}</p>" if i.get('mantenimiento') else ''
     dest = f"<span class='dest'>{e(i['destacado']).upper()}</span>" if i.get('destacado') else ''
     ph = img(i['fotos'][0]) if i.get('fotos') else ''
     url = f"ciprianarriaga.com/catinm/{i['letrero']}/"
     pg += f"""<section class="pg"><div class="h"><h2>Letrero N° {e(i['letrero'])} · {e(i['codigo'])} {dest}</h2><div class="op">{e(i.get('operacion',''))}</div></div>
 <h3>{e(i['titulo'])}</h3><p class="z">{e(i['zona'])}</p>
 <div class="g"><div><div class="pr">{e(money(i))}</div>{mant}
-<p><b>Área:</b> {i.get('m2','')} m² · <b>Hab.:</b> {i.get('habitaciones','')} · <b>Baños:</b> {i.get('banos','')} · <b>Parqueos:</b> {i.get('parqueos','')}</p>
+<p><b>Área:</b> {i.get('m2','')} m² · {('<b>Hab.:</b> '+str(i['habitaciones'])+' · ') if i.get('habitaciones') else ''} <b>Baños:</b> {i.get('banos','')} · <b>Parqueos:</b> {i.get('parqueos','')}</p>
 <p>{e(i.get('descripcion',''))}</p><ul>{car}</ul>
 <p class="u">Ficha con fotos: {url}</p></div>{f'<img src="{ph}">' if ph else ''}</div>
 <div class="say"><b>Al contestar:</b> «Ciprián Arriaga & Asociados, buenas. Sí, el inmueble del letrero N° {e(i['letrero'])} está disponible en {e(i.get('operacion','venta').lower())}. Le pasamos con el Lic. Stalin Ciprián o le tomamos su nombre y teléfono para que le devuelva la llamada.» Para detalles y fotos: WhatsApp 809-815-5997.</div></section>"""
