@@ -336,7 +336,8 @@
     ],
     "oculto": true,
     "pendiente": true,
-    "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Turey+252,+El+Cacique,+Santo+Domingo"
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Turey+252,+El+Cacique,+Santo+Domingo",
+    "mantenimiento": "incluido en el precio"
   },
   {
     "letrero": "56",
