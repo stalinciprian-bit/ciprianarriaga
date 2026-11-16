@@ -84,6 +84,11 @@ footer{border-top:1px solid var(--rule);padding-block:28px;font:400 12.5px/1.6 v
 .foot-logo{display:block;width:min(260px,70%);margin:0 auto 20px;background:var(--logo-bg);border-radius:14px;padding:8px 10px}
 .foot-logo img{width:100%;height:auto;display:block}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.filters .qw{flex:1 1 320px}.filters .qw input{width:100%}
+.filters #pmin,.filters #pmax{min-width:0;width:130px}
+.sugs{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 14px}
+.sugs button{font:600 13px var(--display);border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.sugs button:hover{border-color:var(--brass)}
 @media(max-width:640px){
 header{position:static}
 header .wrap{padding-block:10px;gap:6px}
@@ -93,7 +98,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
 .hero{padding-block:28px 22px}.hero p{font-size:16px}
 .filters{flex-direction:column;align-items:stretch;gap:14px;padding-block:18px}
 .seg{width:100%}.seg button{flex:1;padding:13px 6px}
-.filters label{width:100%}.filters select,.filters input{width:100%;min-width:0;padding:12px}
+.filters label{width:100%}.filters select,.filters input,.filters #pmin,.filters #pmax{width:100%;min-width:0;padding:12px}
 .count{margin-left:0}
 .grid{grid-template-columns:minmax(0,1fr);gap:18px;padding-bottom:40px}
 .body{padding:16px}.body h3{font-size:20px}.precio{font-size:24px}

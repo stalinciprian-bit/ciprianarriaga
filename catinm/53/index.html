@@ -84,6 +84,11 @@ footer{border-top:1px solid var(--rule);padding-block:28px;font:400 12.5px/1.6 v
 .foot-logo{display:block;width:min(260px,70%);margin:0 auto 20px;background:var(--logo-bg);border-radius:14px;padding:8px 10px}
 .foot-logo img{width:100%;height:auto;display:block}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.filters .qw{flex:1 1 320px}.filters .qw input{width:100%}
+.filters #pmin,.filters #pmax{min-width:0;width:130px}
+.sugs{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 14px}
+.sugs button{font:600 13px var(--display);border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.sugs button:hover{border-color:var(--brass)}
 @media(max-width:640px){
 header{position:static}
 header .wrap{padding-block:10px;gap:6px}
@@ -93,7 +98,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
 .hero{padding-block:28px 22px}.hero p{font-size:16px}
 .filters{flex-direction:column;align-items:stretch;gap:14px;padding-block:18px}
 .seg{width:100%}.seg button{flex:1;padding:13px 6px}
-.filters label{width:100%}.filters select,.filters input{width:100%;min-width:0;padding:12px}
+.filters label{width:100%}.filters select,.filters input,.filters #pmin,.filters #pmax{width:100%;min-width:0;padding:12px}
 .count{margin-left:0}
 .grid{grid-template-columns:minmax(0,1fr);gap:18px;padding-bottom:40px}
 .body{padding:16px}.body h3{font-size:20px}.precio{font-size:24px}
@@ -156,7 +161,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
       <h1>Apartamento 6‑A, Torre Sol de Oro</h1>
       <div class="zona">Ensanche Naco, Santo Domingo</div>
       <div class="precio">USD$380,000.00</div>
-      <div class="specs"><span><b>280</b> m²</span><span><b>3</b> hab.</span><span><b>3.5</b> baños</span><span><b>2</b> parqueos</span></div><p class="mantl"><b>Mantenimiento:</b> RD$12,590.00 al mes</p>
+      <div class="specs"><span><b>280</b> m²</span><span><b>3</b> hab.</span><span><b>3.5</b> baños</span><span><b>2</b> parqueos</span></div><p class="mantl"><b>Mantenimiento:</b> RD$12,590.00 al mes, aparte del precio de venta</p>
       <a class="btn" href="https://wa.me/18098155997?text=Hola%2C%20me%20interesa%20el%20inmueble%20del%20letrero%20N%C2%B0%2053%20%28Apartamento%206%E2%80%91A%2C%20Torre%20Sol%20de%20Oro%29%20del%20cat%C3%A1logo%20de%20Cipri%C3%A1n%20Arriaga%20%26%20Asocs." target="_blank" rel="noopener">Consultar por WhatsApp</a>
       <a class="btn alt" href="tel:+18095333060">Llamar al 809-533-3060</a>
       <a class="pdfl" href="../pdf/sol-de-oro-6a.pdf">Descargar presentación (PDF)</a>
@@ -164,7 +169,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
     </div>
   </div>
   <div class="det">
-    <h2>Descripción</h2><p>Apartamento 6‑A, sexto nivel, de 280 m² en el exclusivo sector de Naco, Distrito Nacional. Tres habitaciones, cada una con walking closet y baño; pisos en mármol, cocina fría con isla y cocina caliente independiente, cuarto de servicio con baño y dos parqueos techados. Paga RD$12,590.00 de mantenimiento.</p><h2>Características</h2><ul><li>Sexto nivel, 280 m²</li><li>2 parqueos techados, portón eléctrico</li><li>Lobby con control de acceso y personal permanente</li><li>3 habitaciones con walking closet y baño; closets forrados en cedro y blackouts</li><li>Pisos en mármol, decoración en led en la sala; baño de visitas todo en mármol</li><li>2 apartamentos por piso, 2 ascensores, buzón de basura</li><li>Aires centrales en la sala; preinstalación para las habitaciones</li><li>Cocina fría con isla y topes de marmolite; cocina caliente independiente</li><li>Cuarto de servicio con baño, área de lavado y preinstalación de gas</li><li>Locker privado en el primer nivel; deck en el 6to piso para unidades de aire</li><li>Área social con piscina, salón de actividades, gazebo y vestidores (en remodelación)</li><li>Mantenimiento: RD$12,590.00 al mes</li></ul>
+    <h2>Descripción</h2><p>Apartamento 6‑A, sexto nivel, de 280 m² en el exclusivo sector de Naco, Distrito Nacional. Tres habitaciones, cada una con walking closet y baño; pisos en mármol, cocina fría con isla y cocina caliente independiente, cuarto de servicio con baño y dos parqueos techados. El mantenimiento es de RD$12,590.00 mensuales y no está incluido en el precio de venta.</p><h2>Características</h2><ul><li>Sexto nivel, 280 m²</li><li>2 parqueos techados, portón eléctrico</li><li>Lobby con control de acceso y personal permanente</li><li>3 habitaciones con walking closet y baño; closets forrados en cedro y blackouts</li><li>Pisos en mármol, decoración en led en la sala; baño de visitas todo en mármol</li><li>2 apartamentos por piso, 2 ascensores, buzón de basura</li><li>Aires centrales en la sala; preinstalación para las habitaciones</li><li>Cocina fría con isla y topes de marmolite; cocina caliente independiente</li><li>Cuarto de servicio con baño, área de lavado y preinstalación de gas</li><li>Locker privado en el primer nivel; deck en el 6to piso para unidades de aire</li><li>Área social con piscina, salón de actividades, gazebo y vestidores (en remodelación)</li><li>Mantenimiento: RD$12,590.00 al mes, aparte del precio de venta</li></ul>
     <p class="note" style="border:0;padding:20px 0 0">Precios y disponibilidad sujetos a confirmación. Consulte con nuestro despacho antes de cualquier oferta o reserva.</p>
   </div>
 </main>
