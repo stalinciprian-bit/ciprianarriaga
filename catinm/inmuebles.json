@@ -304,7 +304,7 @@
     "codigo": "CI-0055",
     "tipo": "Apartamento",
     "titulo": "Apartamento de primer nivel en alquiler",
-    "zona": "Santo Domingo",
+    "zona": "El Cacique, Santo Domingo",
     "operacion": "Alquiler",
     "precio": 1200,
     "moneda": "USD",
@@ -335,7 +335,8 @@
       "fotos/55/10.jpg"
     ],
     "oculto": true,
-    "pendiente": true
+    "pendiente": true,
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Calle+Turey+252,+El+Cacique,+Santo+Domingo"
   },
   {
     "letrero": "56",
