@@ -51,8 +51,7 @@
       "fotos/40/05.jpg",
       "fotos/40/06.jpg"
     ],
-    "oculto": true,
-    "pendiente": true
+    "oculto": false
   },
   {
     "letrero": "41",
@@ -97,8 +96,7 @@
       "fotos/41/03.jpg",
       "fotos/41/04.jpg"
     ],
-    "oculto": true,
-    "pendiente": true
+    "oculto": false
   },
   {
     "letrero": "42",
@@ -144,8 +142,7 @@
       "fotos/42/04.jpg",
       "fotos/42/05.jpg"
     ],
-    "oculto": true,
-    "pendiente": true
+    "oculto": false
   },
   {
     "letrero": "43",
@@ -191,8 +188,7 @@
       "fotos/43/03.jpg",
       "fotos/43/04.jpg"
     ],
-    "oculto": true,
-    "pendiente": true
+    "oculto": false
   },
   {
     "letrero": "53",
