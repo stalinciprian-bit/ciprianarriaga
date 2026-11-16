@@ -180,12 +180,6 @@ footer{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
     <h1>Inmuebles con <em>respaldo jurídico</em></h1>
     <p>Propiedades en venta y alquiler, revisadas por nuestro despacho: título, registro e impuestos al día antes de ofrecerlas.</p>
   </div></section>
-  <section class="priv" id="priv" aria-labelledby="priv-t" hidden><div class="wrap">
-    <span class="eyebrow">★ Privilegiados</span>
-    <h2 id="priv-t">Oportunidades que no debe dejar pasar</h2>
-    <p class="sub">Una venta de alto valor y alquileres seleccionados, listos para visitar.</p>
-    <div class="priv-grid" id="priv-grid"></div>
-  </div></section>
   <div class="wrap">
     <div class="filters">
       <div class="seg" role="group" aria-label="Operación">
@@ -292,7 +286,7 @@ footer{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
   fetch('inmuebles.json').then(r=>r.json()).then(d=>{
     DATA=d;[...new Set(d.filter(i=>!i.oculto&&!i.cerrado).map(i=>i.tipo))].sort().forEach(t=>{const o=document.createElement('option');o.value=o.textContent=t;$('#tipo').append(o)});
     const qp=new URLSearchParams(location.search).get('q');if(qp)$('#q').value=qp;
-    renderPriv();render();
+    render();
   }).catch(()=>{$('#empty').hidden=false;$('#empty').textContent='No se pudo cargar el catálogo. Intente de nuevo.'});
 })();
 </script>
