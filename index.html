@@ -369,6 +369,12 @@ header{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
 .cat-cta p{max-width:56ch;margin:12px 0 0;color:#c9d1db}
 .cat-btn{display:inline-block;background:var(--brass);color:#1B2A41;text-decoration:none;font:700 14px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:15px 26px}
 .cat-btn:hover{background:var(--rose);color:#fff}
+.cat-act{display:flex;flex-direction:column;gap:12px;min-width:min(100%,420px)}
+.cat-search{display:flex;gap:0}
+.cat-search input{flex:1;min-width:0;font:400 16px var(--display);padding:14px 16px;border:0;background:#fff;color:#1B2A41}
+.cat-search .cat-btn{border:0;cursor:pointer}
+.cat-all{color:inherit;font:600 14px var(--display);letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:640px){.cat-act{width:100%}}
 .cat-btn:focus-visible{outline:2px solid var(--on-deep);outline-offset:3px}
 </style>
 
@@ -688,7 +694,13 @@ header{border-top:5px solid transparent;border-image:linear-gradient(90deg,#1B2A
         <h2>Inmuebles con respaldo jurídico</h2>
         <p>Propiedades en venta y alquiler, revisadas por nuestro despacho: título, registro e impuestos al día antes de ofrecerlas.</p>
       </div>
-      <a class="cat-btn" href="catinm/">Ver catálogo</a>
+      <div class="cat-act">
+        <form class="cat-search" action="catinm/" method="get" role="search">
+          <input type="search" name="q" placeholder="Buscar: tipo, zona, venta o alquiler, precio, N° de letrero" aria-label="Buscar inmuebles" autocomplete="off">
+          <button type="submit" class="cat-btn">Buscar</button>
+        </form>
+        <a class="cat-all" href="catinm/">Ver todo el catálogo</a>
+      </div>
     </div>
   </section>
 

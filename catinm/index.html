@@ -81,6 +81,11 @@ footer{border-top:1px solid var(--rule);padding-block:28px;font:400 12.5px/1.6 v
 .foot-logo{display:block;width:min(260px,70%);margin:0 auto 20px;background:var(--logo-bg);border-radius:14px;padding:8px 10px}
 .foot-logo img{width:100%;height:auto;display:block}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.filters .qw{flex:1 1 320px}.filters .qw input{width:100%}
+.filters #pmin,.filters #pmax{min-width:0;width:130px}
+.sugs{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 14px}
+.sugs button{font:600 13px var(--display);border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.sugs button:hover{border-color:var(--brass)}
 @media(max-width:640px){
 header{position:static}
 header .wrap{padding-block:10px;gap:6px}
@@ -90,7 +95,7 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
 .hero{padding-block:28px 22px}.hero p{font-size:16px}
 .filters{flex-direction:column;align-items:stretch;gap:14px;padding-block:18px}
 .seg{width:100%}.seg button{flex:1;padding:13px 6px}
-.filters label{width:100%}.filters select,.filters input{width:100%;min-width:0;padding:12px}
+.filters label{width:100%}.filters select,.filters input,.filters #pmin,.filters #pmax{width:100%;min-width:0;padding:12px}
 .count{margin-left:0}
 .grid{grid-template-columns:minmax(0,1fr);gap:18px;padding-bottom:40px}
 .body{padding:16px}.body h3{font-size:20px}.precio{font-size:24px}
@@ -124,7 +129,10 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
         <button type="button" data-op="Alquiler" aria-pressed="false">Alquiler</button>
       </div>
       <label>Tipo<select id="tipo"><option value="">Todos</option></select></label>
-      <label>Buscar<input id="q" type="search" placeholder="Zona o palabra"></label>
+      <label class="qw">Buscar<input id="q" type="search" placeholder="Ej.: apartamento Naco venta, letrero 53, hasta 400000" autocomplete="off" enterkeyhint="search"></label>
+      <label>Precio mín.<input id="pmin" type="text" inputmode="numeric" placeholder="0"></label>
+      <label>Precio máx.<input id="pmax" type="text" inputmode="numeric" placeholder="Sin límite"></label>
+      <label>Moneda<select id="mon"><option value="">Todas</option><option value="USD">USD$</option><option value="DOP">RD$</option></select></label>
       <span class="count" id="count" aria-live="polite"></span>
     </div>
     <div class="grid" id="grid"></div>
@@ -166,18 +174,50 @@ nav{gap:4px 18px;width:100%}nav a{font-size:15px;padding:6px 0}
       (i.descripcion?'<p class="desc">'+esc(i.descripcion)+'</p>':'')+
       '<div class="cta"><a class="btn" href="'+esc(i.letrero)+'/">Ver presentación</a><span class="cod">Letrero N° '+esc(i.letrero)+'</span></div></div></article>';
   }
+  const norm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const num=t=>{const n=parseFloat(String(t).replace(/[^\d.]/g,''));return isNaN(n)?null:n};
+  function parseQ(raw){
+    let t=' '+norm(raw)+' ',o={op:'',mon:'',min:null,max:null,words:[]};
+    t=t.replace(/\b(hasta|menos de|menor a|max|maximo|bajo)\s*(usd\$?|us\$|rd\$|\$)?\s*([\d][\d.,]*)/g,(m,a,c,n)=>{o.max=num(n);return ' '});
+    t=t.replace(/\b(desde|mas de|mayor a|min|minimo|sobre)\s*(usd\$?|us\$|rd\$|\$)?\s*([\d][\d.,]*)/g,(m,a,c,n)=>{o.min=num(n);return ' '});
+    if(/\b(usd|us\$|dolares?)\b/.test(t)){o.mon='USD';t=t.replace(/\b(usd|us\$|dolares?)\b/g,' ')}
+    if(/\b(rd\$|dop|pesos?)\b/.test(t)){o.mon='DOP';t=t.replace(/\b(rd\$|dop|pesos?)\b/g,' ')}
+    if(/\b(venta|vender|comprar|compra|se vende)\b/.test(t)){o.op='Venta';t=t.replace(/\b(venta|vender|comprar|compra|se vende)\b/g,' ')}
+    if(/\b(alquiler|alquilar|renta|rentar|se alquila)\b/.test(t)){o.op='Alquiler';t=t.replace(/\b(alquiler|alquilar|renta|rentar|se alquila)\b/g,' ')}
+    t=t.replace(/\b(letrero|rotulo|no|n°|nro|numero|num)\b\.?/g,' ').replace(/[^a-z0-9ñ ]/g,' ');
+    o.words=t.split(/\s+/).filter(Boolean);
+    return o;
+  }
+  function hay(i){
+    return norm([i.tipo,i.titulo,i.zona,i.descripcion,(i.caracteristicas||[]).join(' '),i.codigo,'letrero '+i.letrero,i.operacion,i.destacado,i.m2&&i.m2+' m2',i.habitaciones&&i.habitaciones+' habitaciones hab',i.banos&&i.banos+' banos',i.parqueos&&i.parqueos+' parqueos',i.precio&&String(i.precio)].join(' ')).replace(/[^a-z0-9ñ ]/g,' ');
+  }
   function render(){
-    const q=$('#q').value.trim().toLowerCase(), tp=$('#tipo').value;
-    const L=DATA.filter(i=>!i.cerrado&&!i.oculto&&(!op||i.operacion===op)&&(!tp||i.tipo===tp)&&(!q||(i.titulo+' '+i.zona+' '+i.descripcion+' '+i.codigo+' '+i.letrero).toLowerCase().includes(q)));
+    const raw=$('#q').value, tp=$('#tipo').value, P=parseQ(raw);
+    const mon=$('#mon').value||P.mon, o2=op||P.op;
+    let pmin=num($('#pmin').value), pmax=num($('#pmax').value);
+    if(pmin==null)pmin=P.min; if(pmax==null)pmax=P.max;
+    const usePrice=pmin!=null||pmax!=null;
+    const L=DATA.filter(i=>{
+      if(i.cerrado||i.oculto)return false;
+      if(o2&&i.operacion!==o2)return false;
+      if(tp&&i.tipo!==tp)return false;
+      const cur=(i.moneda==='USD'?'USD':'DOP');
+      if(mon&&i.precio&&cur!==mon)return false;
+      if(mon&&!i.precio&&usePrice)return false;
+      if(usePrice){if(!i.precio)return false;if(pmin!=null&&i.precio<pmin)return false;if(pmax!=null&&i.precio>pmax)return false}
+      const h=' '+hay(i)+' ';
+      return P.words.every(w=>/^\d+$/.test(w)?(String(i.letrero)===w||h.includes(' '+w+' ')||h.includes(w)):h.includes(w));
+    });
     $('#grid').innerHTML=L.map(card).join('');
     $('#empty').hidden=L.length>0;
     $('#count').textContent=L.length+(L.length===1?' inmueble':' inmuebles');
   }
   document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
     op=b.dataset.op;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
-  $('#tipo').addEventListener('change',render);$('#q').addEventListener('input',render);
+  ['#tipo','#mon'].forEach(k=>$(k).addEventListener('change',render));['#q','#pmin','#pmax'].forEach(k=>$(k).addEventListener('input',render));
   fetch('inmuebles.json').then(r=>r.json()).then(d=>{
     DATA=d;[...new Set(d.filter(i=>!i.oculto&&!i.cerrado).map(i=>i.tipo))].sort().forEach(t=>{const o=document.createElement('option');o.value=o.textContent=t;$('#tipo').append(o)});
+    const qp=new URLSearchParams(location.search).get('q');if(qp)$('#q').value=qp;
     render();
   }).catch(()=>{$('#empty').hidden=false;$('#empty').textContent='No se pudo cargar el catálogo. Intente de nuevo.'});
 })();
