@@ -22,6 +22,7 @@ for i in act:
     car = ''.join(f'<li>{e(c)}</li>' for c in i.get('caracteristicas',[]))
     lot = ('<table><tr><th>Lote</th><th>Área</th><th>Precio</th></tr>' + ''.join(f"<tr><td>{e(l['nombre'])}</td><td>{float(l['m2']):,.2f} m²</td><td>USD${float(l['precio']):,.2f}</td></tr>" for l in i['lotes']) + '</table><p><b>' + e(i.get('opcion','')) + '</b></p>') if i.get('lotes') else ''
     mant = f"<p><b>Mantenimiento:</b> {e(i['mantenimiento'][0].upper()+i['mantenimiento'][1:])}</p>" if i.get('mantenimiento') else ''
+    legalp = f"<p><b>Nota legal:</b> {e(i['legal'])}</p>" if i.get('legal') else ''
     dest = f"<span class='dest'>{e(i['destacado']).upper()}</span>" if i.get('destacado') else ''
     ph = img(i['fotos'][0]) if i.get('fotos') else ''
     url = f"ciprianarriaga.com/catinm/{i['letrero']}/"
@@ -29,7 +30,7 @@ for i in act:
 <h3>{e(i['titulo'])}</h3><p class="z">{e(i['zona'])}</p>
 <div class="g"><div><div class="pr">{e(money(i))}</div>{('<p>'+e(i['precio_nota'])+'</p>') if i.get('precio_nota') else ''}{mant}
 <p><b>Área:</b> {i.get('m2','')} m² · {('<b>Hab.:</b> '+str(i['habitaciones'])+' · ') if i.get('habitaciones') else ''} <b>Baños:</b> {i.get('banos','')} · <b>Parqueos:</b> {i.get('parqueos','')}</p>
-<p>{e(i.get('descripcion',''))}</p>{lot}<ul>{car}</ul>
+<p>{e(i.get('descripcion',''))}</p>{legalp}{lot}<ul>{car}</ul>
 <p class="u">Ficha con fotos: {url}</p></div>{f'<img src="{ph}">' if ph else ''}</div>
 <div class="say"><b>Al contestar:</b> «Ciprián Arriaga & Asociados, buenas. Sí, el Inmueble No. {e(i['letrero'])} está disponible en {e(i.get('operacion','venta').lower())}.» <b>Todas las llamadas por inmuebles se pasan al Lic. Stalin Ciprián</b> (que pregunten por él). Si no está: tomar nombre y teléfono para que él devuelva la llamada.</div></section>"""
 prp = ''
