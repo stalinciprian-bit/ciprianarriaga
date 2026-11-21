@@ -94,7 +94,7 @@ tpl = '''<!doctype html>
 </main>
 <footer>
   <a class="foot-logo" href="../../" aria-label="Ir al inicio"><img src="../../logo-ca.webp" alt="Ciprián Arriaga &amp; Asoc." width="1000" height="442" loading="lazy"></a>
-  <div class="wrap"><span>© 2026 Ciprián Arriaga &amp; Asocs. · Abogados Notarios</span><span>ciprianarriaga.com · <a href="mailto:info@ciprianarriaga.com">info@ciprianarriaga.com</a></span></div>
+  <div class="wrap"><span>© 2026 Ciprián Arriaga &amp; Asocs. · Abogados Notarios</span><span>ciprianarriaga.com · <a href="mailto:info@ciprianarriaga.com">info@ciprianarriaga.com</a></span><span><a href="../../#terminos">Términos y condiciones</a> · <a href="../../#privacidad">Política de privacidad</a></span></div>
 </footer>
 <script>
 document.querySelectorAll('.thumbs button').forEach(function(b){{b.addEventListener('click',function(){{
